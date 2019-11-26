@@ -76,6 +76,13 @@ module.exports = io => {
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 
+    socket.on('choose card', (roomName, idx) => {
+      const {player} = rooms[roomName].players.filter(
+        client => client.id === socket.id
+      )[0]
+      io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
+    })
+
     socket.on('change turn', roomName => {
       rooms[roomName].boardstate.activePlayer =
         rooms[roomName].boardstate.activePlayer % 4 + 1

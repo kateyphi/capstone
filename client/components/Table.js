@@ -20,7 +20,7 @@ export default class Table extends React.Component {
           beige: [],
           grey: []
         },
-        currentClue: {clue: '', player: 0},
+        currentClue: {clue: '', player: 0, clueNum: 0},
         activePlayer: 0
       }
     }
