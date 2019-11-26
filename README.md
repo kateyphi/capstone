@@ -1,4 +1,5 @@
 # Codewords
+
 * Grace Hopper 1909 - Capstone Project
 
 Visit [Codewords](https://codewords.herokuapp.com/) to check it out!
@@ -32,7 +33,6 @@ By the end of the production period, this app will, at a minimum, satisfy the fo
 * [DB Schema](./docs/schema.md)
 * [Project Board](https://github.com/callbacka/codewords/projects/1)
 
-
 ## Download
 
 Step by step guide for downloading repo:
@@ -40,19 +40,13 @@ Step by step guide for downloading repo:
 ```
 cd <directory you want to download to>
 
-git clone https://github.com/callbacka/codewords.git
+git clone https://github.com/callbacka/capstone.git
 
-cd codewords
-
-cd client
+cd capstone
 
 npm install
 
-npm run start-dev
-
-cd ../server
-
-npm install
+CREATEDB codewords
 
 npm run start-dev
 
@@ -75,9 +69,9 @@ LinkedIn: https://www.linkedin.com/in/pauline-k/
 
 ### `Katey Phillips`
 
-LinkedIn: https://www.linkedin.com/in/katherine-phillips-b8628250/
-
 Github: https://github.com/kateyphi
+
+LinkedIn: https://www.linkedin.com/in/katherine-phillips-b8628250/
 
 ### `Crispina Muriel`
 
