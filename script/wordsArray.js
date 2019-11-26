@@ -608,40 +608,7 @@ Time\
 Tinting\
 Tiptoe\
 Tiptop\
-Tired\
-Tissue\
-Toast\
-Toilet\
-Tool\
-Toothbrush\
-Tornado\
-Tournament\
-Tractor\
-Train\
-Trash\
-Treasure\
-Tree\
-Triangle\
-Trip\
-Truck\
-Tub\
-Tuba\
-Tutor\
-Television\
-Twang\
-Twig\
-Twitterpated\
-Type\
-Unemployed\
-Upgrade\
-Vest\
-Vision\
-Wag\
-Water\
-Watermelon\
-Wax\
-Wedding\
-Weed Welder Whatever Wheelchair Whiplash Whisk Whistle White Wig Will Windmill Winter Wish Wolf Wool World Worm Wristwatch Yardstick Zamboni Zen Zero Zipper Zone Zoo'
+Tired Tissue Toast Toilet Tool Toothbrush Tornado Tournament Tractor Train Trash Treasure Tree Triangle Trip Truck Tub Tuba Tutor Television Twang Twig Twitterpated Type Unemployed Upgrade Vest Vision Wag Water Watermelon Wax Wedding Weed Welder Whatever Wheelchair Whiplash Whisk Whistle White Wig Will Windmill Winter Wish Wolf Wool World Worm Wristwatch Yardstick Zamboni Zen Zero Zipper Zone Zoo'
 
 let wordsArray = words.split(' ')
 module.exports = wordsArray
