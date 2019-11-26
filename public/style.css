@@ -27,8 +27,10 @@ form div {
 }
 
 .board {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
   width: 16.5em;
 }
 
@@ -59,22 +61,47 @@ form div {
 
 .square-red {
   background-color: red;
+  border: 1px solid black;
+  display: grid;
+  border-radius: 3px;
+  height: 75px;
+  width: 125px;
 }
 
 .square-blue {
   background-color: blue;
+  border: 1px solid black;
+  display: grid;
+  border-radius: 3px;
+  height: 75px;
+  width: 125px;
 }
 
 .square-beige {
   background-color: beige;
+  border: 1px solid black;
+  display: grid;
+  border-radius: 3px;
+  height: 75px;
+  width: 125px;
 }
 
-.square-gray {
-  background-color: gray;
+.square-grey {
+  background-color: grey;
+  border: 1px solid black;
+  display: grid;
+  border-radius: 3px;
+  height: 75px;
+  width: 125px;
 }
 
 .square-white {
   background-color: rgb(178, 255, 197);
+  border: 1px solid black;
+  display: grid;
+  border-radius: 3px;
+  height: 75px;
+  width: 125px;
 }
 
 .flex {
@@ -226,6 +253,8 @@ form div {
 .table {
   display: flex;
   flex-direction: column;
+  width: 60vw;
+  height: 50vh;
 }
 
 #sidebar {
