@@ -10,7 +10,7 @@ class Board extends React.Component {
       redWordIndices: [],
       blueWordIndices: [],
       beigeWordIndices: [],
-      grayWordIndices: []
+      greyWordIndices: []
     }
 
     socket.on('codemaster view', deck => {
@@ -31,8 +31,8 @@ class Board extends React.Component {
         return 'blue'
       } else if (bs.beige.includes(idx)) {
         return 'beige'
-      } else if (bs.gray.includes(idx)) {
-        return 'gray'
+      } else if (bs.grey.includes(idx)) {
+        return 'grey'
       } else {
         return 'white'
       }
@@ -42,8 +42,8 @@ class Board extends React.Component {
       return 'blue'
     } else if (this.state.beigeWordIndices.includes(idx)) {
       return 'beige'
-    } else if (this.state.grayWordIndices.includes(idx)) {
-      return 'gray'
+    } else if (this.state.greyWordIndices.includes(idx)) {
+      return 'grey'
     } else {
       return 'white'
     }

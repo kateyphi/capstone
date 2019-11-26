@@ -30,7 +30,7 @@ class deck {
     this.redWordIndices = []
     this.blueWordIndices = []
     this.beigeWordIndices = []
-    this.grayWordIndices = []
+    this.greyWordIndices = []
   }
 
   newDeck() {
@@ -77,7 +77,7 @@ class deck {
     this.redWordIndices = shuffled.slice(0, 9)
     this.blueWordIndices = shuffled.slice(9, 17)
     this.beigeWordIndices = shuffled.slice(17, 24)
-    this.grayWordIndices = shuffled.slice(24)
+    this.greyWordIndices = shuffled.slice(24)
   }
 }
 
