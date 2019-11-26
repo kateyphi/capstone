@@ -66,8 +66,9 @@ export default class Table extends React.Component {
             this.state.boardstate[this.state.boardstate.activePlayer]
           }
         />
-
-        <Chat />
+        <div className="chat">
+          <Chat player={this.state.player} room={this.state.room} />
+        </div>
       </div>
     )
   }

@@ -27,10 +27,12 @@ const newRound = (roomName, io) => {
 
 module.exports = io => {
   io.on('connection', socket => {
-    console.log(`A socket connection to the server has been made: ${socket.id}`)
+    console.log(`User connected: ${socket.id}`)
 
-    socket.on('send_message', data => {
-      io.emit('receive_message', data)
+    socket.on('sendMessage', (message, callback) => {
+      io.emit('message', {text: message})
+
+      callback()
     })
 
     socket.on('disconnect', () => {
