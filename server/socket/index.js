@@ -64,11 +64,12 @@ module.exports = io => {
       socket.emit('guesser view', rooms[roomName].deck.words)
     })
 
-    socket.on('give clue', (roomName, clue) => {
+    socket.on('give clue', (roomName, clue, clueNum) => {
       const {player} = rooms[roomName].players.filter(
         client => client.id === socket.id
       )[0]
       rooms[roomName].boardstate.currentClue.clue = clue
+      rooms[roomName].boardstate.currentClue.clueNum = clueNum
       rooms[roomName].boardstate.currentClue.player = player
       rooms[roomName].boardstate.activePlayer =
         rooms[roomName].boardstate.activePlayer % 4 + 1

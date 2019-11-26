@@ -5,7 +5,8 @@ export default class Hand extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      clue: ''
+      clue: '',
+      clueNum: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.giveClue = this.giveClue.bind(this)
@@ -14,7 +15,12 @@ export default class Hand extends React.Component {
 
   giveClue = evt => {
     evt.preventDefault()
-    socket.emit('give clue', this.props.room, this.state.clue)
+    socket.emit(
+      'give clue',
+      this.props.room,
+      this.state.clue,
+      this.state.clueNum
+    )
   }
 
   handleChange(evt) {
@@ -41,14 +47,22 @@ export default class Hand extends React.Component {
               onChange={this.handleChange}
               value={this.state.clue}
             />
+            <label htmlFor="clue">Number:</label>
+            <input
+              name="clueNum"
+              type="number"
+              autoComplete="off"
+              onChange={this.handleChange}
+              value={this.state.clueNum}
+            />
             <button type="submit">Submit</button>
           </form>
         )
       } else {
         return (
           <div id="hand-bottom">
-            Your codemaster gave the clue {this.props.currentClue.clue} Please
-            select your guesses.{' '}
+            Your codemaster gave the clue {this.props.currentClue.clue} for{' '}
+            {this.props.currentClue.clueNum}. Please select your guesses.{' '}
             <button type="button" onClick={this.handleClick}>
               Change turn
             </button>
@@ -68,7 +82,8 @@ export default class Hand extends React.Component {
       return (
         <div id="hand-bottom">
           Player {this.props.currentClue.player} gave the clue{' '}
-          {this.props.currentClue.clue} Waiting for{' '}
+          {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
+          Waiting for the
           {this.props.currentPlayer.team} {this.props.currentPlayer.role} to
           submit their guesses.
         </div>
