@@ -80,6 +80,20 @@ module.exports = io => {
       const {player} = rooms[roomName].players.filter(
         client => client.id === socket.id
       )[0]
+      const {team} = rooms[roomName].boardstate[player]
+
+      if (rooms[roomName].deck.redWordIndices.includes(idx)) {
+        rooms[roomName].boardstate.colors.red.push(idx)
+      } else if (rooms[roomName].deck.blueWordIndices.includes(idx)) {
+        rooms[roomName].boardstate.colors.blue.push(idx)
+      } else if (rooms[roomName].deck.redWordIndices.includes(idx)) {
+        rooms[roomName].boardstate.colors.beige.push(idx)
+      } else {
+        rooms[roomName].boardstate.colors.grey.push(idx)
+        // game should end if this happens
+      }
+      rooms[roomName].boardstate.activePlayer =
+        rooms[roomName].boardstate.activePlayer % 4 + 1
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 

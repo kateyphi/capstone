@@ -21,11 +21,18 @@ class Board extends React.Component {
     socket.on('guesser view', words => {
       this.setState({words})
     })
+
+    // socket.on('choose card', )
+    this.chooseCard = this.chooseCard.bind(this)
   }
 
   findColor(idx) {
+    if (!this.props.boardstate[this.props.player]) {
+      return 'white'
+    }
+    let role = this.props.boardstate[this.props.player].role
     let bs = this.props.boardstate.colors
-    if (this.props.player.role === 'guesser') {
+    if (role === 'guesser') {
       if (bs.red.includes(idx)) {
         return 'red'
       } else if (bs.blue.includes(idx)) {
@@ -49,6 +56,11 @@ class Board extends React.Component {
       return 'white'
     }
   }
+
+  chooseCard(idx) {
+    socket.emit('choose card', this.props.room, idx)
+  }
+
   // Create the 5 x 5 board
   createBoard(row, col) {
     const board = []
@@ -70,11 +82,13 @@ class Board extends React.Component {
   }
 
   renderSquare(i) {
+    console.log('rendering...')
     return (
       <Square
         key={i}
         value={this.state.words[i]}
         background={this.findColor(i)}
+        chooseCard={() => this.chooseCard(i)}
       />
     )
   }

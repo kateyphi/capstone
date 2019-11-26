@@ -1,5 +1,5 @@
 import React from 'react'
-import PlayerView from './Hand'
+import Hand from './Hand'
 import Board from './Board'
 import socket from '../socket'
 
@@ -55,7 +55,7 @@ export default class Table extends React.Component {
           active={this.state.boardstate.activePlayer}
           currentClue={this.state.currentClue}
         />
-        <PlayerView
+        <Hand
           room={this.state.room}
           player={this.state.player}
           active={this.state.boardstate.activePlayer}
