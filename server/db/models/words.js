@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Words = db.define('words', {
   words: {
-    type: Sequelize.ARRAY
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   },
   category: {
     type: Sequelize.INTEGER
