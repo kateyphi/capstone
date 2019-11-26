@@ -18,7 +18,7 @@ export default class Table extends React.Component {
           red: [],
           blue: [],
           beige: [],
-          gray: []
+          grey: []
         },
         currentClue: {clue: '', player: 0},
         activePlayer: 0

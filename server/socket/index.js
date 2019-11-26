@@ -13,7 +13,7 @@ const newRound = (roomName, io) => {
       red: [],
       blue: [],
       beige: [],
-      gray: []
+      grey: []
     },
     currentClue: {clue: '', player: 0},
     activePlayer: 0
