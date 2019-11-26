@@ -13,6 +13,7 @@ class deck {
     this.shuffleColors()
   }
 
+  // will need to populate the array below with a randomized selection of 25 words.
   shuffleWords() {
     const shuffled = [
       'a',
