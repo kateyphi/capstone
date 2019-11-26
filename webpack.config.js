@@ -14,9 +14,6 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devtool: 'source-map',
-  watchOptions: {
-    ignored: /node_modules/
-  },
   module: {
     rules: [
       {
