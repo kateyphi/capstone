@@ -1,7 +1,15 @@
 import React from 'react'
 
 const Square = props => {
-  return <div className={`square-${props.background}`}>{props.value}</div>
+  return (
+    <div
+      onClick={props.chooseCard}
+      className={`square-${props.background}`}
+      id={props.key}
+    >
+      {props.value}
+    </div>
+  )
 }
 
 export default Square

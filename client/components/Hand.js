@@ -61,8 +61,8 @@ export default class Hand extends React.Component {
       } else {
         return (
           <div id="hand-bottom">
-            Your codemaster gave the clue {this.props.currentClue.clue} for{' '}
-            {this.props.currentClue.clueNum}. Please select your guesses.{' '}
+            Your codemaster gave the clue {this.props.currentClue.clue} for
+            {this.props.currentClue.clueNum}. Please select your guesses.
             <button type="button" onClick={this.handleClick}>
               Change turn
             </button>
