@@ -24,6 +24,7 @@ class Sidebar extends React.Component {
     socket.emit('get available rooms')
   }
 
+  // 1) when a user enters a room name, it goes onto state under the 'newRoom' property, and when they click 'Create Room', it triggers this createRoom method, which emits the 'joinroom' socket, which is found in server/socket/index.js, passing in the 'newRoom' string currently on state. ///1
   createRoom = event => {
     socket.emit('joinroom', this.state.newRoom)
   }

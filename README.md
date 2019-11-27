@@ -30,8 +30,8 @@ By the end of the production period, this app will, at a minimum, satisfy the fo
 ## Design Docs
 
 * [View Wireframes](./docs/wireframes)
-* [DB Schema](./docs/schema.md)
-* [Project Board](https://github.com/callbacka/codewords/projects/1)
+* [DB Schema](https://github.com/callbacka/capstone/blob/master/docs/db-schema/Screen%20Shot%202019-11-25%20at%201.43.00%20PM.png)
+* [Project Board](https://github.com/callbacka/capstone/projects/2)
 
 ## Download
 
