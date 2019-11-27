@@ -1,4 +1,5 @@
 class deck {
+  // 2a) this class creates a 'deck' which will live on our 'rooms[roomName]' object. The 'words' array contains the 25 words we've chosen. The 'redWordIndices' contains the indices of all of the Square components, which render our individual cards, that should be red. And so on with blue, beige, and grey.
   constructor() {
     this.words = []
     this.redWordIndices = []
@@ -7,13 +8,16 @@ class deck {
     this.greyWordIndices = []
   }
 
+  // this method will run the shuffleWords method and the shuffleColors method below
   newDeck() {
     console.log('in newDeck')
     this.shuffleWords()
     this.shuffleColors()
   }
 
-  // will need to populate the array below with a randomized selection of 25 words.
+  // This method shuffles an array of words and populates the 'words' property of this 'deck' object with the shuffled array of words.
+  // [TODO: we will need to populate the array below with a randomized selection of 25 words from our database of lots of words]
+  // This method may not end up being necessary, depending on how we end up grabbing the words from database (they may already come in a random order)
   shuffleWords() {
     const shuffled = [
       'a',
@@ -53,6 +57,8 @@ class deck {
     }
     this.words = shuffled
   }
+
+  // This method creates an array of numbers from 0 to 24, shuffled into a random order. It then takes a slice of the array and sets it as the 'redWordIndices' property on this 'deck' object. That will determine which cards on the board will be red. And so on for blue, beige, and grey. ///2a
   shuffleColors() {
     const shuffled = [
       0,
