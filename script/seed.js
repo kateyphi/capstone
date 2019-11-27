@@ -13,12 +13,20 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  const words = await Promise.all([
-    Words.create({
-      words: wordsArray,
-      category: 1
+  // const words = await Promise.all([
+  //   Words.create({
+  //     words: wordsArray,
+  //     category: 1
+  //   })
+  // ])
+
+  const newWords = wordsArray.map(word => {
+    return Words.create({
+      word: word
     })
-  ])
+  })
+
+  const words = await Promise.all(newWords)
 
   console.log(`seeded ${users.length} users, and ${words.length} words`)
   console.log(`seeded successfully`)
