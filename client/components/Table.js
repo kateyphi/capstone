@@ -2,6 +2,7 @@ import React from 'react'
 import Hand from './Hand'
 import Board from './Board'
 import socket from '../socket'
+import Chat from './Chat/Chat'
 
 export default class Table extends React.Component {
   constructor() {
@@ -74,6 +75,9 @@ export default class Table extends React.Component {
           }
           yourTurn={yourTurn}
         />
+        <div className="chat">
+          <Chat player={this.state.player} room={this.state.room} />
+        </div>
       </div>
     )
   }
