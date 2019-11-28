@@ -66,6 +66,7 @@ form div {
   border-radius: 3px;
   height: 75px;
   width: 125px;
+  margin: 2px;
 }
 
 .square-blue {
@@ -75,6 +76,7 @@ form div {
   border-radius: 3px;
   height: 75px;
   width: 125px;
+  margin: 2px;
 }
 
 .square-beige {
@@ -84,6 +86,7 @@ form div {
   border-radius: 3px;
   height: 75px;
   width: 125px;
+  margin: 2px;
 }
 
 .square-grey {
@@ -93,23 +96,21 @@ form div {
   border-radius: 3px;
   height: 75px;
   width: 125px;
+  margin: 2px;
 }
 
 .square-white {
-  background-color: rgb(178, 255, 197);
+  background-color: lightblue;
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
   height: 75px;
   width: 125px;
+  margin: 2px;
 }
 
 .flex {
   display: flex;
-}
-
-.playertile {
-  max-height: 100%;
 }
 
 .playertile:hover {
@@ -127,122 +128,6 @@ form div {
   grid-template-columns: 8% 24% 36% 24% 8%;
   grid-template-rows: 8% 28% 28% 28% 6% 8%;
   background-color: grey;
-}
-
-#hand-left {
-  grid-area: 2 / 1 / 5 / 2;
-  transform: rotate(90deg);
-  transform-origin: top left;
-  display: flex;
-  position: relative;
-  left: 5.6vw;
-  flex-direction: reverse;
-}
-
-#discards-left {
-  grid-area: 3 / 2 / 4 / 3;
-  transform: rotate(90deg);
-  display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* align-content: flex-start; */
-}
-
-#hand-right {
-  grid-area: 2 / 5 / 5 / 6;
-  transform: rotate(90deg);
-  transform-origin: top left;
-  position: relative;
-  left: 5.6vw;
-  display: flex;
-  flex-direction: reverse;
-  /* justify-content: center; */
-}
-
-#discards-right {
-  grid-area: 3 / 4 / 4 / 5;
-  transform: rotate(270deg);
-  display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap;
-  align-content: flex-start; */
-}
-
-#hand-top {
-  grid-area: 1 / 2 / 2 / 5;
-  display: flex;
-  justify-content: center;
-}
-
-#discards-top {
-  grid-area: 2 / 3 / 3 / 4;
-  transform: rotate(180deg);
-  display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap;
-  align-content: flex-start; */
-}
-
-#hand-bottom {
-  grid-area: 6 / 2 / 7 / 5;
-  display: flex;
-  max-height: 100%;
-  justify-content: center;
-}
-
-#discards-bottom {
-  grid-area: 4 / 3 / 5 / 4;
-  display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* align-content: flex-start; */
-}
-
-#call-options {
-  grid-area: 5/2/6/5;
-  display: flex;
-  justify-content: center;
-}
-
-#discards-bottom img {
-  max-height: 100%;
-  max-width: 16%;
-}
-
-#discards-top img {
-  max-height: 100%;
-  max-width: 16%;
-}
-
-#discards-left img {
-  max-height: 100%;
-  max-width: 16%;
-}
-
-#discards-right img {
-  max-height: 100%;
-  max-width: 16%;
-}
-
-.tile-left {
-  max-width: 100%;
-  max-height: 10%;
-}
-
-.tile-top {
-  transform: rotate(180deg);
-  max-height: 100%;
-}
-
-.tile-right {
-  max-width: 100%;
-  max-height: 10%;
-}
-
-.discard-row {
-  display: flex;
-  align-items: center;
-  height: 33%;
 }
 
 .main {
@@ -306,4 +191,81 @@ select:focus {
   display: inline-block;
   border: none;
   width: 20%;
+}
+
+.fixed button {
+  background-color: blue;
+}
+
+.btn {
+  background-color: blue;
+  width: 100px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn.show-on-large {
+  background-color: blue;
+}
+.btn:active {
+  background-color: blue;
+}
+.btn:hover {
+  background-color: blue;
+}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
