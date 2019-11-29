@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-class deck {
+class Deck {
   // 2a) this class creates a 'deck' which will live on our 'rooms[roomName]' object. The 'words' array contains the 25 words we've chosen. The 'redWordIndices' contains the indices of all of the Square components, which render our individual cards, that should be red. And so on with blue, beige, and grey.
   constructor() {
     this.words = []
@@ -11,7 +11,7 @@ class deck {
   }
 
   // this method will run the shuffleWords method and the shuffleColors method below
-  async newDeck() {
+  newDeck() {
     console.log('in newDeck')
     this.shuffleWords()
     this.shuffleColors()
@@ -128,4 +128,4 @@ class deck {
   }
 }
 
-module.exports = deck
+module.exports = Deck

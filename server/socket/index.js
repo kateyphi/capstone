@@ -1,5 +1,5 @@
 //require in the 'deck' class which creates a new board:
-const deck = require('../classes/deck')
+const Deck = require('../classes/deck')
 
 //initialize 'rooms', an object that will contain all of the game rooms that get made.
 let rooms = {}
@@ -61,7 +61,7 @@ module.exports = io => {
       // 2) if the room a user created does not yet exist, we will create a new room with that roomName, which is initialized with a new deck [required in from ../classes/deck, shown above], an empty array of players, and an empty object for the boardstate. (--> 2a)
       if (!rooms[roomName])
         rooms[roomName] = {
-          deck: new deck(),
+          deck: new Deck(),
           players: [],
           boardstate: {}
         }
@@ -75,6 +75,7 @@ module.exports = io => {
       }
       // if there are 4 players in the room now, we start the game by running the newRound function, defined above. ///2
       if (players.length === 4) newRound(roomName, io)
+      if (players.length > 4) return
     })
 
     // 5) This will emit the 'codemaster view' socket, found on the Board component (components/Board.js), passing in the deck that lives on our rooms[roomName] object.
