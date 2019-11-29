@@ -76,6 +76,7 @@ export default class Table extends React.Component {
           }
           yourTurn={yourTurn}
           clueNum={this.state.boardstate.currentClue.clueNum}
+          cardsChosen={this.state.boardstate.cardsChosen}
         />
         <div className="chat">
           <Chat player={this.state.player} room={this.state.room} />

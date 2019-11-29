@@ -18,8 +18,9 @@ export default class Hand extends React.Component {
     socket.emit(
       'give clue',
       this.props.room,
+      this.props.player,
       this.state.clue,
-      this.state.clueNum
+      +this.state.clueNum
     )
   }
 
