@@ -3,6 +3,7 @@ import Hand from './Hand'
 import Board from './Board'
 import socket from '../socket'
 import Chat from './Chat/Chat'
+// import axios from 'axios'
 
 export default class Table extends React.Component {
   constructor() {
@@ -48,7 +49,16 @@ export default class Table extends React.Component {
       }
     })
   }
+  // async componentDidUpdate() {
 
+  //   try {
+  //     const {data} = await axios.get(`http://localhost:3000/api/words/random`)
+  //   // dispatch(gotCurrentShoe(data))
+  //     console.log(data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
   // 7) This component renders the Board component and the Hand component. If the player is a codemaster, they will complete their turn in the "Hand" component. If the player is a guesser, they will complete their turn in the "Board" component. ///7
   render() {
     // it's yourTurn if the active player matches the player viewing this component.
