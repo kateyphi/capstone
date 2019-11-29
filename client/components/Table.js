@@ -22,6 +22,7 @@ export default class Table extends React.Component {
           grey: []
         },
         currentClue: {clue: '', clueNum: 0, player: 0},
+        cardsChosen: 0,
         activePlayer: 0
       }
     }
@@ -74,6 +75,7 @@ export default class Table extends React.Component {
             this.state.boardstate[this.state.boardstate.activePlayer]
           }
           yourTurn={yourTurn}
+          clueNum={this.state.boardstate.currentClue.clueNum}
         />
         <div className="chat">
           <Chat player={this.state.player} room={this.state.room} />
