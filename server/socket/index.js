@@ -155,8 +155,10 @@ module.exports = io => {
     })
 
     socket.on('change turn', roomName => {
+      console.log('i got to the change turn socket')
       rooms[roomName].boardstate.activePlayer =
         rooms[roomName].boardstate.activePlayer % 4 + 1
+      rooms[roomName].boardstate.cardsChosen = 0
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 
