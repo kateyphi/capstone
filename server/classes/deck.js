@@ -16,18 +16,18 @@ class deck {
     this.shuffleWords()
     this.shuffleColors()
   }
-  async getWords() {
-    try {
-      const {data} = await axios.get(`http://localhost:3000/api/words/random`)
-      //  console.log(data)
-      const wordArray = data.map(wordObj => {
-        return wordObj.word
-      })
-      this.words = wordArray
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // async getWords() {
+  //   try {
+  //     const {data} = await axios.get(`http://localhost:3000/api/words/random`)
+  //     //  console.log(data)
+  //     const wordArray = data.map(wordObj => {
+  //       return wordObj.word
+  //     })
+  //     this.words = wordArray
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // This method shuffles an array of words and populates the 'words' property of this 'deck' object with the shuffled array of words.
   // [TODO: we will need to populate the array below with a randomized selection of 25 words from our database of lots of words]
