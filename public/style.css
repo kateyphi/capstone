@@ -135,6 +135,10 @@ form div {
   flex-direction: row;
 }
 
+#chat {
+  flex-shrink: 1;
+}
+
 .table {
   display: flex;
   flex-direction: column;

@@ -9,8 +9,10 @@ const App = () => {
     <div className="main">
       {/* <div className="flex"> */}
       <Sidebar />
-      <Chat />
       <Routes />
+      <div id="chat">
+        <Chat />
+      </div>
       {/* </div> */}
     </div>
   )
