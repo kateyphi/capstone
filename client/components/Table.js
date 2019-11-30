@@ -22,6 +22,7 @@ export default class Table extends React.Component {
           grey: []
         },
         currentClue: {clue: '', clueNum: 0, player: 0},
+        cardsChosen: 0,
         activePlayer: 0
       }
     }
@@ -36,6 +37,7 @@ export default class Table extends React.Component {
 
     // 4) The state that is governing most of what the players see is on this component. When this socket below is emitted, passing in an updated boardstate, it updates the state on this component.
     socket.on('update_boardstate', boardstate => {
+      console.log('im updating boardstate!')
       this.setState({boardstate})
     })
 
@@ -74,10 +76,9 @@ export default class Table extends React.Component {
             this.state.boardstate[this.state.boardstate.activePlayer]
           }
           yourTurn={yourTurn}
+          clueNum={this.state.boardstate.currentClue.clueNum}
+          cardsChosen={this.state.boardstate.cardsChosen}
         />
-        <div className="chat">
-          <Chat player={this.state.player} room={this.state.room} />
-        </div>
       </div>
     )
   }

@@ -9,6 +9,7 @@ export default class Hand extends React.Component {
       clueNum: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
     this.giveClue = this.giveClue.bind(this)
   }
 
@@ -18,9 +19,14 @@ export default class Hand extends React.Component {
     socket.emit(
       'give clue',
       this.props.room,
+      this.props.player,
       this.state.clue,
-      this.state.clueNum
+      +this.state.clueNum
     )
+    this.setState({
+      clue: '',
+      clueNum: ''
+    })
   }
 
   handleChange(evt) {
@@ -29,6 +35,9 @@ export default class Hand extends React.Component {
     })
   }
 
+  handleClick() {
+    socket.emit('change turn', this.props.room)
+  }
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
@@ -63,8 +72,13 @@ export default class Hand extends React.Component {
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
           <div id="hand-bottom">
-            Your codemaster gave the clue {this.props.currentClue.clue} for
-            {this.props.currentClue.clueNum}. Please select your guesses.
+            Your codemaster gave the clue {this.props.currentClue.clue} for{' '}
+            {this.props.currentClue.clueNum}. Please select up to{' '}
+            {this.props.currentClue.clueNum + 1} guesses. If you want to select
+            less than that, press the "Done" button to end your turn.
+            <button type="button" onClick={this.handleClick}>
+              Done
+            </button>
           </div>
         )
       }
@@ -79,11 +93,10 @@ export default class Hand extends React.Component {
     } else {
       return (
         <div id="hand-bottom">
-          Player {this.props.currentClue.player} gave the clue
+          Player {this.props.currentClue.player} gave the clue{' '}
           {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
-          Waiting for the
-          {this.props.currentPlayer.team} {this.props.currentPlayer.role} to
-          submit their guesses.
+          Waiting for the {this.props.currentPlayer.team}{' '}
+          {this.props.currentPlayer.role} to submit their guesses.
         </div>
       )
     }

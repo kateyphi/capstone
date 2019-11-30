@@ -2,6 +2,7 @@ import React from 'react'
 
 import Sidebar from './components/Sidebar'
 import Routes from './routes'
+import Chat from './components/Chat/Chat'
 
 const App = () => {
   return (
@@ -9,6 +10,9 @@ const App = () => {
       {/* <div className="flex"> */}
       <Sidebar />
       <Routes />
+      <div id="chat">
+        <Chat />
+      </div>
       {/* </div> */}
     </div>
   )

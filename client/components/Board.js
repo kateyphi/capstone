@@ -63,7 +63,14 @@ class Board extends React.Component {
 
   // 15) This method emits the 'choose card' socket, found in server/socket/index.js, passing in the room and the index of the word in the 'words' array on state. ///15
   chooseCard(idx) {
-    socket.emit('choose card', this.props.room, idx)
+    socket.emit(
+      'choose card',
+      this.props.room,
+      this.props.player,
+      idx,
+      this.props.clueNum,
+      this.props.cardsChosen
+    )
   }
 
   // Create the 5 x 5 board

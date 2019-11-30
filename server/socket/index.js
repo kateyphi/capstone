@@ -1,5 +1,5 @@
 //require in the 'deck' class which creates a new board:
-const deck = require('../classes/deck')
+const Deck = require('../classes/deck')
 
 //initialize 'rooms', an object that will contain all of the game rooms that get made.
 let rooms = {}
@@ -22,6 +22,7 @@ const newRound = (roomName, io) => {
     },
     // these 2 lines below represent the last clue that was given and who the active player is.
     currentClue: {clue: '', clueNum: 0, player: 0},
+    cardsChosen: 0,
     activePlayer: 0
   }
   // run the newDeck method on the deck class (found in ../classes/deck), which shuffles the words and assigns which cards on the board will be red, blue, beige, and grey.
@@ -40,10 +41,8 @@ module.exports = io => {
   io.on('connection', socket => {
     console.log(`User connected: ${socket.id}`)
 
-    socket.on('sendMessage', (message, callback) => {
-      io.emit('message', {text: message})
-
-      callback()
+    socket.on('sendMessage', data => {
+      io.emit('receiveMessage', data)
     })
 
     socket.on('disconnect', () => {
@@ -61,7 +60,7 @@ module.exports = io => {
       // 2) if the room a user created does not yet exist, we will create a new room with that roomName, which is initialized with a new deck [required in from ../classes/deck, shown above], an empty array of players, and an empty object for the boardstate. (--> 2a)
       if (!rooms[roomName])
         rooms[roomName] = {
-          deck: new deck(),
+          deck: new Deck(),
           players: [],
           boardstate: {}
         }
@@ -75,6 +74,7 @@ module.exports = io => {
       }
       // if there are 4 players in the room now, we start the game by running the newRound function, defined above. ///2
       if (players.length === 4) newRound(roomName, io)
+      if (players.length > 4) return
     })
 
     // 5) This will emit the 'codemaster view' socket, found on the Board component (components/Board.js), passing in the deck that lives on our rooms[roomName] object.
@@ -88,11 +88,7 @@ module.exports = io => {
     })
 
     // 10) The socket below will give a clue to the room and then change the turn to the next player.
-    socket.on('give clue', (roomName, clue, clueNum) => {
-      // the 'player' variable used in this socket is identified as the 'player' property on the element of the 'players' array on this rooms[roomName] object whose 'id' property is the same as the socket id of the person emitting this socket. In other words, 'player' refers to the player who emitted this socket.
-      const {player} = rooms[roomName].players.filter(
-        client => client.id === socket.id
-      )[0]
+    socket.on('give clue', (roomName, player, clue, clueNum) => {
       // On the boardstate of this room, we set the currentClue based on the clue and clueNum passed in, along with the player identified above.
       rooms[roomName].boardstate.currentClue.clue = clue
       rooms[roomName].boardstate.currentClue.clueNum = clueNum
@@ -106,34 +102,62 @@ module.exports = io => {
 
     // 16) The socket below will choose a card and display the color for all players.
     // [TODO: A lot to be is yet to be done with this. A guesser should be able to guess as many cards as the 'clueNum' given by the last codemaster. If the chosen card is for the other team or is neutral, the turn should end. If the chosen card is gray, the whole game should end. The codemaster's view should also be changed to reflect which cards have been chosen already.]
-    socket.on('choose card', (roomName, idx) => {
-      const {player} = rooms[roomName].players.filter(
-        client => client.id === socket.id
-      )[0]
+    socket.on('choose card', (roomName, player, idx, clueNum, cardsChosen) => {
       const {team} = rooms[roomName].boardstate[player]
-
       // The 'idx' passed in is the index of the card that the guesser clicked on. We check whether it is in the 'redWordIndices' array, 'blueWordIndices' array, etc (which are properties on the 'deck' object which lives as a property of this room). If it's in the redWordIndices array, then we push that index onto the 'red' array of the 'colors' property of our boardstate. And so on for blue, beige, and grey.
       if (rooms[roomName].deck.redWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.red.push(idx)
+        if (team === 'red') {
+          rooms[roomName].boardstate.cardsChosen++
+        } else {
+          // We change the activePlayer to the next player.
+          rooms[roomName].boardstate.activePlayer =
+            rooms[roomName].boardstate.activePlayer % 4 + 1
+          rooms[roomName].boardstate.cardsChosen = 0
+        }
+        if (cardsChosen === clueNum) {
+          rooms[roomName].boardstate.activePlayer =
+            rooms[roomName].boardstate.activePlayer % 4 + 1
+          rooms[roomName].boardstate.cardsChosen = 0
+        }
       } else if (rooms[roomName].deck.blueWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.blue.push(idx)
+        if (team === 'blue') {
+          rooms[roomName].boardstate.cardsChosen++
+        } else {
+          // We change the activePlayer to the next player.
+          rooms[roomName].boardstate.activePlayer =
+            rooms[roomName].boardstate.activePlayer % 4 + 1
+          rooms[roomName].boardstate.cardsChosen = 0
+        }
+        if (cardsChosen === clueNum) {
+          rooms[roomName].boardstate.activePlayer =
+            rooms[roomName].boardstate.activePlayer % 4 + 1
+          rooms[roomName].boardstate.cardsChosen = 0
+        }
       } else if (rooms[roomName].deck.beigeWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.beige.push(idx)
+        rooms[roomName].boardstate.activePlayer =
+          rooms[roomName].boardstate.activePlayer % 4 + 1
+        rooms[roomName].boardstate.cardsChosen = 0
       } else {
         rooms[roomName].boardstate.colors.grey.push(idx)
+        // GAME OVER. TODO: what happens when a game ends?? 'you win/you lose' popup? for now for production,
+        rooms[roomName].boardstate.activePlayer =
+          rooms[roomName].boardstate.activePlayer % 4 + 1
+        rooms[roomName].boardstate.cardsChosen = 0
       }
 
-      // We change the activePlayer to the next player.
-      rooms[roomName].boardstate.activePlayer =
-        rooms[roomName].boardstate.activePlayer % 4 + 1
-
       // We emit the 'update_boardstate' socket in our room, passing in the boardstate, which has now been updated with the chosen card's color and the new activePlayer. ///16
+      console.log(rooms[roomName].boardstate)
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 
     socket.on('change turn', roomName => {
+      console.log('i got to the change turn socket')
       rooms[roomName].boardstate.activePlayer =
         rooms[roomName].boardstate.activePlayer % 4 + 1
+      rooms[roomName].boardstate.cardsChosen = 0
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 
