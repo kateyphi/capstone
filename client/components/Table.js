@@ -75,9 +75,6 @@ export default class Table extends React.Component {
           }
           yourTurn={yourTurn}
         />
-        <div className="chat">
-          <Chat player={this.state.player} room={this.state.room} />
-        </div>
       </div>
     )
   }

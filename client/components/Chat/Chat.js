@@ -1,47 +1,86 @@
-import React, {useState, useEffect} from 'react'
-import socket from '../../socket'
-import Input from './Input'
-import Messages from '../Chat/Messages/Messages'
+import React from 'react'
+import io from 'socket.io-client'
 
-const Chat = props => {
-  const {player, room} = props
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([])
+class Chat extends React.Component {
+  constructor(props) {
+    super(props)
 
-  useEffect(
-    () => {
-      socket.on('message', data => {
-        setMessages([...messages, data])
+    this.state = {
+      username: '',
+      message: '',
+      messages: []
+    }
+
+    this.socket = io('localhost:3000')
+
+    this.socket.on('receiveMessage', function(data) {
+      addMessage(data)
+    })
+
+    const addMessage = data => {
+      console.log(data)
+      this.setState({messages: [...this.state.messages, data]})
+      console.log(this.state.messages)
+    }
+
+    this.sendMessage = ev => {
+      ev.preventDefault()
+      this.socket.emit('sendMessage', {
+        author: this.state.username,
+        message: this.state.message
       })
-
-      return () => {
-        socket.emit('disconnect')
-
-        socket.off()
-      }
-    },
-    [messages]
-  )
-
-  const sendMessage = event => {
-    event.preventDefault()
-    if (message) {
-      socket.emit('sendMessage', message, () => setMessage(''))
+      this.setState({message: ''})
     }
   }
-
-  return (
-    <div className="outerContainer">
+  render() {
+    return (
       <div className="container">
-        <Messages messages={messages} player={player} />
-        <Input
-          message={message}
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-        />
+        <div className="row">
+          <div className="col-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="card-title">Chat</div>
+                <hr />
+                <div className="messages">
+                  {this.state.messages.map(message => {
+                    return (
+                      <div>
+                        {message.author}: {message.message}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className="card-footer">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={this.state.username}
+                  onChange={ev => this.setState({username: ev.target.value})}
+                  className="form-control"
+                />
+                <br />
+                <input
+                  type="text"
+                  placeholder="Message"
+                  className="form-control"
+                  value={this.state.message}
+                  onChange={ev => this.setState({message: ev.target.value})}
+                />
+                <br />
+                <button
+                  onClick={this.sendMessage}
+                  className="btn btn-primary form-control"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Chat
