@@ -183,10 +183,10 @@ select:focus {
 }
 
 .sendButton {
-  color: #fff !important;
+  color: white;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2979ff;
+  background: #6e6057;
   padding: 20px;
   display: inline-block;
   border: none;
