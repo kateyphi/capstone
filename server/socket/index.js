@@ -41,10 +41,8 @@ module.exports = io => {
   io.on('connection', socket => {
     console.log(`User connected: ${socket.id}`)
 
-    socket.on('sendMessage', (message, callback) => {
-      io.emit('message', {text: message})
-
-      callback()
+    socket.on('sendMessage', data => {
+      io.emit('receiveMessage', data)
     })
 
     socket.on('disconnect', () => {
