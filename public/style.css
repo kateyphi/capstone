@@ -214,3 +214,14 @@ select:focus {
 body {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8eh6_i-J4UzR3y_gN_F6T-G3ZOol0iEjYi2P8fcgVfjihWwyi&s);
 }
+
+#clue-label {
+  font-size: 20px;
+  background-color: #c2a78a;
+  color: #fff;
+}
+
+#input-clue {
+  background-color: rosybrown;
+  color: #fff;
+}
