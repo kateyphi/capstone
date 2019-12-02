@@ -7,6 +7,7 @@ class Chat extends React.Component {
 
     this.state = {
       username: '',
+      users: [],
       message: '',
       messages: []
     }
@@ -18,9 +19,21 @@ class Chat extends React.Component {
     })
 
     const addMessage = data => {
-      console.log(data)
-      this.setState({messages: [...this.state.messages, data]})
-      console.log(this.state.messages)
+      // console.log(data)
+      if (
+        !this.state.users.includes(data.author) ||
+        this.state.username === data.author
+      ) {
+        this.setState({
+          users: [...this.state.users, data.author],
+          messages: [...this.state.messages, data]
+        })
+      }
+      // if(this.state.username === data.author) {
+      //       this.setState({users: [...this.state.users, data.author], messages: [...this.state.messages, data]})
+      // }
+
+      // console.log(this.state.users)
     }
 
     this.sendMessage = ev => {
@@ -32,6 +45,7 @@ class Chat extends React.Component {
       this.setState({message: ''})
     }
   }
+
   render() {
     return (
       <div className="container">

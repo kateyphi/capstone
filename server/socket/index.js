@@ -43,6 +43,7 @@ module.exports = io => {
 
     socket.on('sendMessage', data => {
       io.emit('receiveMessage', data)
+      console.log(data)
     })
 
     socket.on('disconnect', () => {
