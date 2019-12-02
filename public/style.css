@@ -109,6 +109,11 @@ form div {
   margin: 2px;
 }
 
+#hand-bottom {
+  background-color: #c2a78a;
+  border-radius: 3px;
+}
+
 .flex {
   display: flex;
 }
