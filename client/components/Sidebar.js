@@ -1,5 +1,6 @@
 import React from 'react'
 import socket from '../socket'
+import {Link} from 'react-router-dom'
 import {SideNav, SideNavItem, Button, Row, Input} from 'react-materialize'
 
 class Sidebar extends React.Component {
@@ -44,6 +45,7 @@ class Sidebar extends React.Component {
           <SideNavItem>
             <Row>
               <Input
+                placeholder="enter room name"
                 s={12}
                 label="Room"
                 validate
@@ -61,6 +63,15 @@ class Sidebar extends React.Component {
               room[1]
             } players`}</SideNavItem>
           ))}
+          {window.location.href === '/rules' ? (
+            <Button>Back to Home</Button>
+          ) : (
+            <SideNavItem>
+              <Link to="/rules">
+                <Button>How to Play</Button>
+              </Link>
+            </SideNavItem>
+          )}
         </SideNav>
       </div>
     )
