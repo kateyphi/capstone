@@ -39,7 +39,8 @@ export default function HowToPlay() {
             How to Start a Game:
           </Typography>
           <Typography variant="body2" component="p">
-            Type in a room name and click 'Create a Room' to create a new room.<br />
+            Type in a room name and click 'Create a Room' to create a new room.
+            There must be 4 players in the room for the game to start.<br />
             <br />
             <br />
           </Typography>
