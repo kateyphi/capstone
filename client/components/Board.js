@@ -29,7 +29,7 @@ class Board extends React.Component {
       Swal.fire({
         title: 'GAME OVER!',
         text: `${winner}`,
-        icon: 'error',
+        icon: 'info',
         confirmButtonText: 'Cool'
       })
     })
