@@ -9,7 +9,8 @@ class Sidebar extends React.Component {
     this.state = {
       rooms: [],
       current: [],
-      newRoom: ''
+      newRoom: '',
+      newUser: ''
     }
 
     socket.on('open rooms', rooms => {
@@ -27,15 +28,19 @@ class Sidebar extends React.Component {
 
   // 1) when a user enters a room name, it goes onto state under the 'newRoom' property, and when they click 'Create Room', it triggers this createRoom method, which emits the 'joinroom' socket, which is found in server/socket/index.js, passing in the 'newRoom' string currently on state. ///1
   createRoom = event => {
-    socket.emit('joinroom', this.state.newRoom)
+    socket.emit('joinroom', this.state.newRoom, this.state.newUser)
   }
 
-  joinRoom = room => {
-    socket.emit('joinroom', room)
+  joinRoom = (room, user) => {
+    socket.emit('joinroom', room, user)
   }
 
-  handleChange = event => {
+  handleRoom = event => {
     this.setState({newRoom: event.target.value})
+  }
+
+  handleName = event => {
+    this.setState({newUser: event.target.value})
   }
 
   render() {
@@ -49,9 +54,19 @@ class Sidebar extends React.Component {
                 s={12}
                 label="Room"
                 validate
-                onChange={this.handleChange}
+                onChange={this.handleRoom}
               />
             </Row>
+            <Row>
+              <Input
+                placeholder="enter room name"
+                s={12}
+                label="Name"
+                validate
+                onChange={this.handleName}
+              />
+            </Row>
+
             <Button onClick={this.createRoom}>Create Room</Button>
           </SideNavItem>
           <SideNavItem divider />
@@ -59,9 +74,9 @@ class Sidebar extends React.Component {
             <Button onClick={this.getRooms}>Find available rooms</Button>
           </SideNavItem>
           {this.state.rooms.map(room => (
-            <SideNavItem onClick={() => this.joinRoom(room[0])}>{`${room[0]}: ${
-              room[1]
-            } players`}</SideNavItem>
+            <SideNavItem
+              onClick={() => this.joinRoom(room[0], this.state.newUser)}
+            >{`${room[0]}: ${room[1]} players`}</SideNavItem>
           ))}
           {window.location.href === '/rules' ? (
             <Button>Back to Home</Button>

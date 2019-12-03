@@ -41,6 +41,7 @@ export default class Hand extends React.Component {
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
+    console.log(this.props.boardstate)
     if (this.props.active === 0) {
       return <div id="hand-bottom">Waiting for game to begin.</div>
     }
@@ -49,6 +50,8 @@ export default class Hand extends React.Component {
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
           <div id="hand-bottom">
+            Ok {this.props.boardstate[this.props.player].playerName}, give your
+            clue.
             <form id="give-clue" onSubmit={this.giveClue}>
               <label htmlFor="clue">Clue:</label>
               <input
