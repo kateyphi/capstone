@@ -47,7 +47,6 @@ class Chat extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-4">
-            å
             <div className="card">
               <div className="card-body">
                 <div className="room">Room: {this.state.roomname}</div>
