@@ -16,11 +16,6 @@ nav a {
   margin: 1em;
 }
 
-/* form div {
-  margin: 1em;
-  display: inline-block;
-} */
-
 #hand {
   display: flex;
   height: 100px;
@@ -169,8 +164,8 @@ nav a {
   justify-content: space-between;
   background: #c2a78a;
   border-radius: 8px;
-  height: 50vh;
-  width: 40vw;
+  height: 45vh;
+  width: 21vw;
 }
 
 .form {
@@ -222,8 +217,8 @@ body {
 }
 
 .card-footer {
-  width: 38vw;
-  height: 18vh;
+  width: 20vw;
+  height: 13vh;
 }
 
 .card-body {
