@@ -14,16 +14,12 @@ class Sidebar extends React.Component {
     }
 
     socket.on('open rooms', rooms => {
-      console.log('got to the open rooms socket')
       this.setState({rooms})
+      console.log('got to the open rooms socket', this.state)
     })
   }
 
   componentDidMount = () => {
-    this.getRooms()
-  }
-
-  componentDidUpdate = () => {
     this.getRooms()
   }
 
@@ -37,6 +33,7 @@ class Sidebar extends React.Component {
       Swal.fire('Please enter a nickname to join.')
     } else {
       socket.emit('joinroom', this.state.newRoom, this.state.newUser)
+      socket.emit('get available rooms')
       this.setState({newRoom: '', newUser: ''})
     }
   }

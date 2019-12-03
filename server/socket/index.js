@@ -46,7 +46,7 @@ const newRound = (roomName, io) => {
 module.exports = io => {
   io.on('connection', socket => {
     console.log(`User connected: ${socket.id}`)
-
+    socket.join('lobby')
     socket.on('sendMessage', (roomName, data) => {
       io.in(roomName).emit('receiveMessage', data)
     })
@@ -59,7 +59,7 @@ module.exports = io => {
       let openRooms = Object.keys(rooms)
       openRooms = openRooms.filter(room => rooms[room].players.length < 4)
       openRooms = openRooms.map(room => [room, rooms[room].players.length])
-      socket.emit('open rooms', openRooms)
+      io.in('lobby').emit('open rooms', openRooms)
     })
 
     socket.on('joinroom', (roomName, userName) => {
@@ -93,6 +93,7 @@ module.exports = io => {
           roomName,
           players[players.length - 1].playerName
         )
+        io.in(rooms[roomName]).emit('update players in room', userName)
       }
       // if there are 4 players in the room now, we start the game by running the newRound function, defined above. ///2
       if (players.length === 4) {
