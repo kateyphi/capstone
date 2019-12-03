@@ -42,7 +42,7 @@ nav a {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 54px;
+  height: 55px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
@@ -55,57 +55,67 @@ nav a {
 }
 
 .square-red {
-  background-color: red;
+  background-color: #fe5353;
   border: 1px solid black;
+  text-align: center;
+  line-height: 8;
   display: grid;
   border-radius: 3px;
-  height: 5rem;
-  width: 9rem;
-  margin: 2px;
+  height: 8rem;
+  width: 13rem;
+  margin: 15px;
 }
 
 .square-blue {
-  background-color: blue;
+  background-color: #4da6ff;
   border: 1px solid black;
+  text-align: center;
+  line-height: 8;
   display: grid;
   border-radius: 3px;
-  height: 5rem;
-  width: 9rem;
-  margin: 2px;
+  height: 8rem;
+  width: 13rem;
+  margin: 15px;
 }
 
 .square-beige {
   background-color: beige;
   border: 1px solid black;
+  text-align: center;
+  line-height: 8;
   display: grid;
   border-radius: 3px;
-  height: 5rem;
-  width: 9rem;
-  margin: 2px;
+  height: 8rem;
+  width: 13rem;
+  margin: 15px;
 }
 
 .square-grey {
   background-color: grey;
   border: 1px solid black;
+  text-align: center;
+  line-height: 8;
   display: grid;
   border-radius: 3px;
-  height: 5rem;
-  width: 9rem;
-  margin: 2px;
+  height: 8rem;
+  width: 13rem;
+  margin: 15px;
 }
 
 .square-white {
-  background-color: #c2a78a;
+  background-color: #cacac9;
   border: 1px solid black;
+  text-align: center;
+  line-height: 8;
   display: grid;
   border-radius: 3px;
-  height: 5rem;
-  width: 9rem;
-  margin: 2px;
+  height: 8rem;
+  width: 13rem;
+  margin: 15px;
 }
 
 #hand-bottom {
-  background-color: #c2a78a;
+  background-color: #e8e9e9;
   border-radius: 3px;
 }
 
@@ -162,10 +172,12 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #c2a78a;
+  background: grey;
   border-radius: 8px;
   height: 45vh;
   width: 21vw;
+  text-align: 20vw;
+  word-wrap: break-word;
 }
 
 .form {
@@ -219,9 +231,13 @@ body {
 .card-footer {
   width: 20vw;
   height: 13vh;
+  word-wrap: break-word;
 }
 
 .card-body {
+  text-align: justify;
+  word-wrap: break-word;
+  width: 20vw;
   flex-shrink: 1;
   height: 30vh;
 }

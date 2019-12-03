@@ -1,5 +1,5 @@
 import React from 'react'
-import io from 'socket.io-client'
+import ScrollToBottom from 'react-scroll-to-bottom'
 import socket from '../../socket'
 
 class Chat extends React.Component {
@@ -55,7 +55,7 @@ class Chat extends React.Component {
                 <div className="message">
                   {this.state.messages.map(message => {
                     return (
-                      <div>
+                      <div key={message.id}>
                         {message.author}: {message.message}
                       </div>
                     )
