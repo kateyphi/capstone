@@ -25,8 +25,7 @@ const newRound = (roomName, io) => {
     currentClue: {clue: '', clueNum: 0, player: 0},
     cardsChosen: 0,
     activePlayer: 0,
-    redScore: 9,
-    blueScore: 8
+    activeTeam: ''
   }
   // run the newDeck method on the deck class (found in ../classes/deck), which shuffles the words and assigns which cards on the board will be red, blue, beige, and grey.
   // room.deck.newDeck()
@@ -133,8 +132,6 @@ module.exports = io => {
       // The 'idx' passed in is the index of the card that the guesser clicked on. We check whether it is in the 'redWordIndices' array, 'blueWordIndices' array, etc (which are properties on the 'deck' object which lives as a property of this room). If it's in the redWordIndices array, then we push that index onto the 'red' array of the 'colors' property of our boardstate. And so on for blue, beige, and grey.
       if (rooms[roomName].deck.redWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.red.push(idx)
-        rooms[roomName].boardstate.redScore--
-        console.log(rooms[roomName].boardstate.redScore)
         if (team === 'red') {
           rooms[roomName].boardstate.cardsChosen++
         } else {
@@ -150,8 +147,6 @@ module.exports = io => {
         }
       } else if (rooms[roomName].deck.blueWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.blue.push(idx)
-        rooms[roomName].boardstate.blueScore--
-        console.log(rooms[roomName].boardstate.blueScore--)
         if (team === 'blue') {
           rooms[roomName].boardstate.cardsChosen++
         } else {
@@ -172,6 +167,7 @@ module.exports = io => {
         rooms[roomName].boardstate.cardsChosen = 0
       } else {
         rooms[roomName].boardstate.colors.grey.push(idx)
+        rooms[roomName].boardstate.activeTeam = team
         // GAME OVER. TODO: what happens when a game ends?? 'you win/you lose' popup? for now for production,
         rooms[roomName].boardstate.activePlayer =
           rooms[roomName].boardstate.activePlayer % 4 + 1
@@ -196,7 +192,7 @@ module.exports = io => {
     })
 
     socket.on('check winner', roomName => {
-      checkWinner(rooms, roomName)
+      checkWinner(rooms, roomName, io)
     })
   })
 }

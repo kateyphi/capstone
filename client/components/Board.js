@@ -2,6 +2,7 @@
 import React from 'react'
 import Square from './Square'
 import socket from '../socket'
+const Swal = require('sweetalert2')
 
 class Board extends React.Component {
   constructor(props) {
@@ -22,6 +23,15 @@ class Board extends React.Component {
     // This socket just takes in the room's deck's 'words' property, and sets it on state for this component. It would be triggered if the player were a guesser, so they won't get information about the colors of the cards. ///6
     socket.on('guesser view', words => {
       this.setState({words})
+    })
+    socket.on('win', winner => {
+      console.log(winner)
+      Swal.fire({
+        title: 'GAME OVER!',
+        text: `${winner}`,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
     })
 
     this.chooseCard = this.chooseCard.bind(this)
