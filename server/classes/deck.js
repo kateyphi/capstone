@@ -16,6 +16,7 @@ class Deck {
     this.shuffleWords()
     this.shuffleColors()
   }
+
   // async getWords() {
   //   try {
   //     const {data} = await axios.get(`http://localhost:3000/api/words/random`)
