@@ -30,7 +30,7 @@ class Chat extends React.Component {
 
   addMessage = data => {
     this.setState({messages: [...this.state.messages, data]})
-    if (this.state.messages.length > 12) return this.state.messages.shift()
+    if (this.state.messages.length > 10) return this.state.messages.shift()
   }
 
   sendMessage = ev => {
@@ -54,9 +54,9 @@ class Chat extends React.Component {
                 <div className="message">
                   {this.state.messages.map(message => {
                     return (
-                      <div key={message.id}>
+                      <ScrollToBottom key={message.id}>
                         {message.author}: {message.message}
-                      </div>
+                      </ScrollToBottom>
                     )
                   })}
                 </div>
@@ -72,8 +72,9 @@ class Chat extends React.Component {
                 />
                 <br />
                 <button
+                  type="submit"
                   onClick={this.sendMessage}
-                  className="btn btn-primary form-control"
+                  className="btn"
                 >
                   Send
                 </button>
