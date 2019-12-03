@@ -48,25 +48,32 @@ export default class Hand extends React.Component {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-          <form id="give-clue" onSubmit={this.giveClue}>
-            <label htmlFor="clue">Clue:</label>
-            <input
-              name="clue"
-              type="text"
-              autoComplete="off"
-              onChange={this.handleChange}
-              value={this.state.clue}
-            />
-            <label htmlFor="clue">Number:</label>
-            <input
-              name="clueNum"
-              type="number"
-              autoComplete="off"
-              onChange={this.handleChange}
-              value={this.state.clueNum}
-            />
-            <button type="submit">Submit</button>
-          </form>
+          <div>
+            <h5>
+              {' '}
+              You are the {this.props.boardstate[this.props.player].team}{' '}
+              Codemaster
+            </h5>
+            <form id="give-clue" onSubmit={this.giveClue}>
+              <label htmlFor="clue">Clue:</label>
+              <input
+                name="clue"
+                type="text"
+                autoComplete="off"
+                onChange={this.handleChange}
+                value={this.state.clue}
+              />
+              <label htmlFor="clue">Number:</label>
+              <input
+                name="clueNum"
+                type="number"
+                autoComplete="off"
+                onChange={this.handleChange}
+                value={this.state.clueNum}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         )
       } else {
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
