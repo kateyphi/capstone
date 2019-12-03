@@ -49,21 +49,29 @@ export default class Hand extends React.Component {
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
           <form id="give-clue" onSubmit={this.giveClue}>
-            <label htmlFor="clue">Clue:</label>
+            <label id="clue-label" htmlFor="clue">
+              Clue:
+            </label>
             <input
+              id="clue-input"
               name="clue"
               type="text"
               autoComplete="off"
               onChange={this.handleChange}
               value={this.state.clue}
+              placeholder="enter your clue here"
             />
-            <label htmlFor="clue">Number:</label>
+            <label id="clue-label" htmlFor="clue">
+              Number:
+            </label>
             <input
+              id="clue-input"
               name="clueNum"
               type="number"
               autoComplete="off"
               onChange={this.handleChange}
               value={this.state.clueNum}
+              placeholder="choose a number of tiles"
             />
             <button type="submit">Submit</button>
           </form>
