@@ -1,6 +1,5 @@
 import React from 'react'
 import socket from '../socket'
-import {Link} from 'react-router-dom'
 import {SideNav, SideNavItem, Button, Row, Input} from 'react-materialize'
 
 class Sidebar extends React.Component {
@@ -76,6 +75,7 @@ class Sidebar extends React.Component {
 
           {this.state.rooms.map(room => (
             <SideNavItem
+              key={room.id}
               onClick={() => this.joinRoom(room[0], this.state.newUser)}
             >{`${room[0]}: ${room[1]} players`}</SideNavItem>
           ))}
