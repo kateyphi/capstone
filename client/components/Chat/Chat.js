@@ -15,6 +15,7 @@ class Chat extends React.Component {
     socket.on('joinchat', (roomname, username) => {
       console.log('got to the joinchat socket!')
       this.setState({roomname, username})
+      this.setState({messages: []})
     })
 
     // this.socket = io('localhost:3000')
@@ -35,7 +36,7 @@ class Chat extends React.Component {
 
   sendMessage = ev => {
     ev.preventDefault()
-    socket.emit('sendMessage', {
+    socket.emit('sendMessage', this.state.roomname, {
       author: this.state.username,
       message: this.state.message
     })

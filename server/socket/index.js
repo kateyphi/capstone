@@ -29,7 +29,6 @@ const newRound = (roomName, io) => {
   // room.deck.newDeck()
   // set the boardstate property of our room to be the boardstate object that we initialized above
   room.boardstate = freshBoardState
-  console.log('fresh board state?', room.boardstate)
   room.boardstate[1].playerName = room.players[0].playerName
   room.boardstate[2].playerName = room.players[1].playerName
   room.boardstate[3].playerName = room.players[2].playerName
@@ -46,8 +45,8 @@ module.exports = io => {
   io.on('connection', socket => {
     console.log(`User connected: ${socket.id}`)
 
-    socket.on('sendMessage', data => {
-      io.emit('receiveMessage', data)
+    socket.on('sendMessage', (roomName, data) => {
+      io.in(roomName).emit('receiveMessage', data)
     })
 
     socket.on('disconnect', () => {
