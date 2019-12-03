@@ -12,72 +12,18 @@ class Deck {
 
   // this method will run the shuffleWords method and the shuffleColors method below
   newDeck() {
-    console.log('in newDeck')
     this.shuffleWords()
     this.shuffleColors()
   }
 
-  // async getWords() {
-  //   try {
-  //     const {data} = await axios.get(`http://localhost:3000/api/words/random`)
-  //     //  console.log(data)
-  //     const wordArray = data.map(wordObj => {
-  //       return wordObj.word
-  //     })
-  //     this.words = wordArray
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // This method shuffles an array of words and populates the 'words' property of this 'deck' object with the shuffled array of words.
-  // [TODO: we will need to populate the array below with a randomized selection of 25 words from our database of lots of words]
-  // This method may not end up being necessary, depending on how we end up grabbing the words from database (they may already come in a random order)
+  // This method retrieves an object of random words and maps it into an array. Then populates the 'words' property of this 'deck' object with the array of words.
   async shuffleWords() {
-    // const shuffled = [
-    //   'a',
-    //   'b',
-    //   'c',
-    //   'd',
-    //   'e',
-    //   'f',
-    //   'g',
-    //   'h',
-    //   'i',
-    //   'j',
-    //   'k',
-    //   'l',
-    //   'm',
-    //   'n',
-    //   'o',
-    //   'p',
-    //   'q',
-    //   'r',
-    //   's',
-    //   't',
-    //   'u',
-    //   'v',
-    //   'w',
-    //   'x',
-    //   'y'
-    // ]
-    // let i = 25
-    // let index
-    // let temp
-    // while (i--) {
-    //   index = Math.floor((i + 1) * Math.random())
-    //   temp = shuffled[index]
-    //   shuffled[index] = shuffled[i]
-    //   shuffled[i] = temp
-    // }
-    // this.words = shuffled;
     try {
+      // axios call for 25 random words from our db
       const {data} = await axios.get(`http://localhost:3000/api/words/random`)
-      console.log(data)
       const wordArray = data.map(wordObj => {
         return wordObj.word
       })
-      console.log(wordArray)
       this.words = wordArray
     } catch (err) {
       console.log(err)

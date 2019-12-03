@@ -10,11 +10,12 @@ export default class Table extends React.Component {
     this.state = {
       room: '',
       player: 99,
+      playerName: '',
       boardstate: {
-        1: {team: 'red', role: 'codemaster'},
-        2: {team: 'red', role: 'guesser'},
-        3: {team: 'blue', role: 'codemaster'},
-        4: {team: 'blue', role: 'guesser'},
+        1: {team: 'red', role: 'codemaster', playerName: ''},
+        2: {team: 'red', role: 'guesser', playerName: ''},
+        3: {team: 'blue', role: 'codemaster', playerName: ''},
+        4: {team: 'blue', role: 'guesser', playerName: ''},
         colors: {
           red: [],
           blue: [],
@@ -28,8 +29,8 @@ export default class Table extends React.Component {
     }
 
     // 2b) This socket takes in the room and the player, and puts them on state. To clarify, the 'player' property on state will refer to the player who is viewing this component. It is specific to each person in the game. ///2b
-    socket.on('joinedroom', (room, player) => {
-      this.setState({room, player})
+    socket.on('joinedroom', (room, player, playerName) => {
+      this.setState({room, player, playerName})
       console.log(
         `Joined room ${this.state.room} as player ${this.state.player}`
       )

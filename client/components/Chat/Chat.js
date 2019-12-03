@@ -1,37 +1,48 @@
 import React from 'react'
 import io from 'socket.io-client'
+import socket from '../../socket'
 
 class Chat extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
+      roomname: '',
       username: '',
       message: '',
       messages: []
     }
 
-    this.socket = io('localhost:3000')
-
-    this.socket.on('receiveMessage', function(data) {
-      addMessage(data)
+    socket.on('joinchat', (roomname, username) => {
+      console.log('got to the joinchat socket!')
+      this.setState({roomname, username})
+      this.setState({messages: []})
     })
 
-    const addMessage = data => {
-      console.log(data)
-      this.setState({messages: [...this.state.messages, data]})
-      console.log(this.state.messages)
-    }
+    // this.socket = io('localhost:3000')
 
-    this.sendMessage = ev => {
-      ev.preventDefault()
-      this.socket.emit('sendMessage', {
-        author: this.state.username,
-        message: this.state.message
-      })
-      this.setState({message: ''})
-    }
+    socket.on('receiveMessage', data => {
+      this.addMessage(data)
+    })
+
+    this.addMessage = this.addMessage.bind(this)
+    this.sendMessage = this.sendMessage.bind(this)
   }
+
+  addMessage = data => {
+    console.log(data)
+    this.setState({messages: [...this.state.messages, data]})
+    console.log(this.state.messages)
+  }
+
+  sendMessage = ev => {
+    ev.preventDefault()
+    socket.emit('sendMessage', this.state.roomname, {
+      author: this.state.username,
+      message: this.state.message
+    })
+    this.setState({message: ''})
+  }
+
   render() {
     return (
       <div className="container">
@@ -39,7 +50,7 @@ class Chat extends React.Component {
           <div className="col-4">
             <div className="card">
               <div className="card-body">
-                <div className="card-title">Chat</div>
+                <div className="card-title">Room: {this.state.roomname}</div>
                 <hr />
                 <div className="messages">
                   {this.state.messages.map(message => {
@@ -52,13 +63,13 @@ class Chat extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                <input
+                {/* <input
                   type="text"
                   placeholder="Name"
                   value={this.state.username}
                   onChange={ev => this.setState({username: ev.target.value})}
                   className="form-control"
-                />
+                /> */}
                 <br />
                 <input
                   type="text"
