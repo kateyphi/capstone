@@ -14,11 +14,16 @@ class Sidebar extends React.Component {
     }
 
     socket.on('open rooms', rooms => {
+      console.log('got to the open rooms socket')
       this.setState({rooms})
     })
   }
 
   componentDidMount = () => {
+    this.getRooms()
+  }
+
+  componentDidUpdate = () => {
     this.getRooms()
   }
 
@@ -28,11 +33,15 @@ class Sidebar extends React.Component {
 
   // 1) when a user enters a room name, it goes onto state under the 'newRoom' property, and when they click 'Create Room', it triggers this createRoom method, which emits the 'joinroom' socket, which is found in server/socket/index.js, passing in the 'newRoom' string currently on state. ///1
   createRoom = event => {
+    event.preventDefault()
     socket.emit('joinroom', this.state.newRoom, this.state.newUser)
+    this.setState({newRoom: '', newUser: ''})
   }
 
   joinRoom = (room, user) => {
     socket.emit('joinroom', room, user)
+    socket.emit('get available rooms')
+    this.setState({newRoom: '', newUser: ''})
   }
 
   handleRoom = event => {
@@ -53,6 +62,7 @@ class Sidebar extends React.Component {
                 placeholder="enter room name"
                 s={12}
                 label="Room"
+                value={this.state.newRoom}
                 validate
                 onChange={this.handleRoom}
               />
@@ -62,6 +72,7 @@ class Sidebar extends React.Component {
                 placeholder="enter username"
                 s={12}
                 label="Name"
+                value={this.state.newUser}
                 validate
                 onChange={this.handleName}
               />
@@ -70,9 +81,6 @@ class Sidebar extends React.Component {
             <Button onClick={this.createRoom}>Create Room</Button>
           </SideNavItem>
           <SideNavItem divider />
-          <SideNavItem>
-            <Button onClick={this.getRooms}>Find available rooms</Button>
-          </SideNavItem>
           {this.state.rooms.map(room => (
             <SideNavItem
               onClick={() => this.joinRoom(room[0], this.state.newUser)}
