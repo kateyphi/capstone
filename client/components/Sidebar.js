@@ -60,32 +60,36 @@ class Sidebar extends React.Component {
     return (
       <div id="sidebar">
         <SideNav className="fixed" trigger={<Button>Rooms</Button>}>
-          <SideNavItem>
-            <Row>
-              Enter your nickname:
-              <Input
-                placeholder="enter nickname"
-                s={12}
-                value={this.state.newUser}
-                validate
-                onChange={this.handleName}
-              />
-            </Row>
-            <Row>
+          <Row>
+            <div id="gold">Enter your nickname:</div>
+
+            <Input
+              placeholder="enter nickname"
+              s={12}
+              value={this.state.newUser}
+              validate
+              onChange={this.handleName}
+            />
+          </Row>
+          <Row>
+            <div id="gold">
               To create a new room, enter a room name below and press Create
               Room.
-              <Input
-                placeholder="enter room name"
-                s={12}
-                value={this.state.newRoom}
-                validate
-                onChange={this.handleRoom}
-              />
-            </Row>
-            <Button onClick={this.createRoom}>Create Room</Button>
-          </SideNavItem>
-          <SideNavItem divider />
-          Or, to join an open room, click on one of the rooms below:
+            </div>
+
+            <Input
+              placeholder="enter room name"
+              s={12}
+              value={this.state.newRoom}
+              validate
+              onChange={this.handleRoom}
+            />
+          </Row>
+          <Button onClick={this.createRoom}>Create Room</Button>
+          <div id="gold">
+            Or, to join an open room, click on one of the rooms below:
+          </div>
+
           {this.state.rooms.map(room => (
             <SideNavItem
               key={room.id}

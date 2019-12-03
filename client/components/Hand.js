@@ -49,8 +49,10 @@ export default class Hand extends React.Component {
     if (this.props.room === '') {
       return (
         <div id="hand-bottom">
-          {' '}
-          Welcome to CodeWords! Create or join a game on the left panel.{' '}
+          {'  '}
+          <b>
+            Welcome to CodeWords! Create or join a game on the left panel.
+          </b>{' '}
         </div>
       )
     }
