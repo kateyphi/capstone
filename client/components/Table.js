@@ -1,8 +1,8 @@
 import React from 'react'
 import Hand from './Hand'
 import Board from './Board'
+import UserInfo from './UserInfo'
 import socket from '../socket'
-import Chat from './Chat/Chat'
 
 export default class Table extends React.Component {
   constructor() {
@@ -58,6 +58,13 @@ export default class Table extends React.Component {
     let yourTurn = this.state.boardstate.activePlayer === this.state.player
     return (
       <div className="table">
+        <UserInfo
+          room={this.state.room}
+          player={this.state.player}
+          playerName={this.state.playerName}
+          playerInfo={this.state.boardstate[this.state.player]}
+          active={this.state.boardstate.activePlayer}
+        />
         <Hand
           room={this.state.room}
           player={this.state.player}

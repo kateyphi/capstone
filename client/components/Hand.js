@@ -41,21 +41,19 @@ export default class Hand extends React.Component {
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
-    console.log(this.props.boardstate)
     if (this.props.active === 0) {
       return <div id="hand-bottom">Waiting for game to begin.</div>
     }
+
     if (this.props.yourTurn) {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-
-          <div>
-            <h5>
-              {' '}
-              You are the {this.props.boardstate[this.props.player].team}{' '}
-              Codemaster
-            </h5>
+          <div id="hand-bottom">
+            <p>
+              Please submit a one-word clue, and a number of cards that
+              correspond to that clue:
+            </p>
 
             <form id="give-clue" onSubmit={this.giveClue}>
               <label htmlFor="clue">Clue:</label>

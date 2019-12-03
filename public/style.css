@@ -109,6 +109,26 @@ nav a {
   margin: 2px;
 }
 
+#user-info {
+  background-color: beige;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.info-red {
+  color: red;
+}
+
+.info-blue {
+  color: rgb(101, 101, 168);
+}
+
+.info-labels {
+  font-weight: bold;
+}
+
 #hand-bottom {
   background-color: #c2a78a;
   border-radius: 3px;
