@@ -123,6 +123,10 @@ nav a {
   justify-content: space-evenly;
 }
 
+h4 {
+  text-align: center;
+}
+
 .info-red {
   color: red;
 }
@@ -136,7 +140,6 @@ nav a {
 }
 
 #hand-bottom {
-  text-align: center;
   border-radius: 3px;
 }
 
@@ -354,10 +357,6 @@ body {
 
 #give-clue {
   font-weight: bold;
-}
-
-h5 {
-  text-align: center;
 }
 
 .center {
