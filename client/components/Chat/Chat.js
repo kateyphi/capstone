@@ -1,5 +1,5 @@
 import React from 'react'
-import io from 'socket.io-client'
+import ScrollToBottom from 'react-scroll-to-bottom'
 import socket from '../../socket'
 
 class Chat extends React.Component {
@@ -29,9 +29,8 @@ class Chat extends React.Component {
   }
 
   addMessage = data => {
-    console.log(data)
     this.setState({messages: [...this.state.messages, data]})
-    console.log(this.state.messages)
+    if (this.state.messages.length > 10) return this.state.messages.shift()
   }
 
   sendMessage = ev => {
@@ -55,9 +54,9 @@ class Chat extends React.Component {
                 <div className="message">
                   {this.state.messages.map(message => {
                     return (
-                      <div>
+                      <ScrollToBottom key={message.id}>
                         {message.author}: {message.message}
-                      </div>
+                      </ScrollToBottom>
                     )
                   })}
                 </div>
@@ -70,9 +69,13 @@ class Chat extends React.Component {
                   className="form-control"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
+                  onKeyPress={ev =>
+                    ev.key === 'Enter' ? this.sendMessage(event) : null
+                  }
                 />
                 <br />
                 <button
+                  type="submit"
                   onClick={this.sendMessage}
                   className="btn btn-primary form-control"
                 >
