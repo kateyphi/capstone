@@ -216,13 +216,18 @@ nav a {
   height: 100vh;
 }
 
+.room {
+  color: white;
+  padding-top: 10px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: lightslategrey;
   border-radius: 8px;
-  height: 45vh;
+  height: 50vh;
   width: 21vw;
   text-align: 20vw;
   word-wrap: break-word;
@@ -284,6 +289,7 @@ body {
   width: 20vw;
   height: 13vh;
   word-wrap: break-word;
+  position: static;
 }
 
 .card-body {

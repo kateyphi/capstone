@@ -50,7 +50,7 @@ class Sidebar extends React.Component {
           <SideNavItem>
             <Row>
               <Input
-                placeholder="enter room name"
+                placeholder="Enter Room Name"
                 s={12}
                 label="Room"
                 validate
@@ -59,7 +59,7 @@ class Sidebar extends React.Component {
             </Row>
             <Row>
               <Input
-                placeholder="enter username"
+                placeholder="Enter Username"
                 s={12}
                 label="Name"
                 validate
@@ -73,6 +73,7 @@ class Sidebar extends React.Component {
           <SideNavItem>
             <Button onClick={this.getRooms}>Find available rooms</Button>
           </SideNavItem>
+
           {this.state.rooms.map(room => (
             <SideNavItem
               onClick={() => this.joinRoom(room[0], this.state.newUser)}
