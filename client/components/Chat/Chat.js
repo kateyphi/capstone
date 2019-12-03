@@ -13,7 +13,6 @@ class Chat extends React.Component {
     }
 
     socket.on('joinchat', (roomname, username) => {
-      console.log('got to the joinchat socket!')
       this.setState({roomname, username})
       this.setState({messages: []})
     })
