@@ -9,6 +9,7 @@ a {
 
 label {
   display: block;
+  text: white;
 }
 
 nav a {
@@ -234,6 +235,7 @@ nav a {
 }
 
 .input {
+  color: black;
   border: none;
   border-radius: 0;
   padding: 5%;
@@ -311,10 +313,11 @@ body {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
+  height: 100%;
 }
 
 /* The Close Button */
@@ -341,4 +344,19 @@ body {
 #input-clue {
   background-color: rosybrown;
   color: #fff;
+}
+
+#give-clue {
+  font-weight: bold;
+}
+
+h5 {
+  text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
