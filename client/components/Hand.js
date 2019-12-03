@@ -5,9 +5,14 @@ export default class Hand extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      roomPlayers: [],
       clue: '',
       clueNum: ''
     }
+
+    socket.on('update players in room', username => {
+      this.setState({roomPlayers: [...this.state.roomPlayers, username]})
+    })
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.giveClue = this.giveClue.bind(this)
@@ -45,12 +50,23 @@ export default class Hand extends React.Component {
       return (
         <div id="hand-bottom">
           {' '}
-          Welcome to CodeWord! Create or join a game on the left panel.{' '}
+          Welcome to CodeWords! Create or join a game on the left panel.{' '}
         </div>
       )
     }
     if (this.props.active === 0) {
-      return <div id="hand-bottom">You are in the room {this.props.room}.</div>
+      return (
+        <div id="hand-bottom">
+          You are in the room {this.props.room}.<br />
+          In {this.props.room}:{' '}
+          {this.state.roomPlayers.map(player => (
+            <span>
+              {player}
+              {','}
+            </span>
+          ))}
+        </div>
+      )
     }
     if (this.props.yourTurn) {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
