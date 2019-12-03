@@ -10,10 +10,6 @@ const App = () => {
       {/* <div className="flex"> */}
       <Sidebar />
       <Routes />
-      <div id="chat">
-        <Chat />
-      </div>
-      {/* </div> */}
     </div>
   )
 }

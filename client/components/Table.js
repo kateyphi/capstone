@@ -2,6 +2,9 @@ import React from 'react'
 import Hand from './Hand'
 import Board from './Board'
 import UserInfo from './UserInfo'
+import TeamInfo from './TeamInfo'
+import BoardInfo from './BoardInfo'
+import Chat from './Chat/Chat'
 import socket from '../socket'
 
 export default class Table extends React.Component {
@@ -57,36 +60,49 @@ export default class Table extends React.Component {
     // it's yourTurn if the active player matches the player viewing this component.
     let yourTurn = this.state.boardstate.activePlayer === this.state.player
     return (
-      <div className="table">
-        <UserInfo
-          room={this.state.room}
-          player={this.state.player}
-          playerName={this.state.playerName}
-          playerInfo={this.state.boardstate[this.state.player]}
-          active={this.state.boardstate.activePlayer}
-        />
-        <Hand
-          room={this.state.room}
-          player={this.state.player}
-          active={this.state.boardstate.activePlayer}
-          currentClue={this.state.boardstate.currentClue}
-          boardstate={this.state.boardstate}
-          currentPlayer={
-            this.state.boardstate[this.state.boardstate.activePlayer]
-          }
-          yourTurn={yourTurn}
-        />
-        <Board
-          boardstate={this.state.boardstate}
-          room={this.state.room}
-          player={this.state.player}
-          currentPlayer={
-            this.state.boardstate[this.state.boardstate.activePlayer]
-          }
-          yourTurn={yourTurn}
-          clueNum={this.state.boardstate.currentClue.clueNum}
-          cardsChosen={this.state.boardstate.cardsChosen}
-        />
+      <div id="game">
+        <div className="left-side">
+          <UserInfo
+            room={this.state.room}
+            player={this.state.player}
+            playerName={this.state.playerName}
+            playerInfo={this.state.boardstate[this.state.player]}
+            active={this.state.boardstate.activePlayer}
+          />
+          <Hand
+            room={this.state.room}
+            player={this.state.player}
+            active={this.state.boardstate.activePlayer}
+            currentClue={this.state.boardstate.currentClue}
+            boardstate={this.state.boardstate}
+            currentPlayer={
+              this.state.boardstate[this.state.boardstate.activePlayer]
+            }
+            yourTurn={yourTurn}
+          />
+          <Board
+            boardstate={this.state.boardstate}
+            room={this.state.room}
+            player={this.state.player}
+            currentPlayer={
+              this.state.boardstate[this.state.boardstate.activePlayer]
+            }
+            yourTurn={yourTurn}
+            clueNum={this.state.boardstate.currentClue.clueNum}
+            cardsChosen={this.state.boardstate.cardsChosen}
+          />
+        </div>
+        <div className="right-side">
+          <TeamInfo
+            active={this.state.boardstate.activePlayer}
+            boardstate={this.state.boardstate}
+          />
+          <BoardInfo
+            active={this.state.boardstate.activePlayer}
+            boardstate={this.state.boardstate}
+          />
+          <Chat />
+        </div>
       </div>
     )
   }

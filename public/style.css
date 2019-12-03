@@ -164,6 +164,34 @@ nav a {
   flex-shrink: 1;
 }
 
+#game {
+  display: flex;
+  flex-direction: row;
+}
+
+#teams {
+  background-color: #c2a78a;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+#redteam {
+  background-color: lightcoral;
+  border-radius: 3px;
+}
+
+#blueteam {
+  background-color: lightskyblue;
+  border-radius: 3px;
+}
+
+#board-info {
+  background-color: #c2a78a;
+}
+
 .table {
   display: flex;
   flex-direction: column;
