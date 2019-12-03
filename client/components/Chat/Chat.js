@@ -69,12 +69,15 @@ class Chat extends React.Component {
                   className="form-control"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
+                  onKeyPress={ev =>
+                    ev.key === 'Enter' ? this.sendMessage(event) : null
+                  }
                 />
                 <br />
                 <button
                   type="submit"
                   onClick={this.sendMessage}
-                  className="btn"
+                  className="btn btn-primary form-control"
                 >
                   Send
                 </button>
