@@ -227,10 +227,11 @@ nav a {
   justify-content: space-between;
   background: lightslategrey;
   border-radius: 8px;
-  height: 50vh;
+  height: 51vh;
   width: 21vw;
   text-align: 20vw;
   word-wrap: break-word;
+  margin-right: 15px;
 }
 
 .form {
@@ -288,7 +289,7 @@ body {
 
 .card-footer {
   width: 20vw;
-  height: 13vh;
+  height: 14vh;
   word-wrap: break-word;
   position: static;
 }
