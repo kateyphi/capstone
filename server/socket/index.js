@@ -86,7 +86,11 @@ module.exports = io => {
           players.length,
           players[players.length - 1].playerName
         )
-        io.emit('joinchat', roomName, players[players.length - 1].playerName)
+        socket.emit(
+          'joinchat',
+          roomName,
+          players[players.length - 1].playerName
+        )
       }
       // if there are 4 players in the room now, we start the game by running the newRound function, defined above. ///2
       if (players.length === 4) {

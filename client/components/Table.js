@@ -10,6 +10,7 @@ export default class Table extends React.Component {
     this.state = {
       room: '',
       player: 99,
+      playerName: '',
       boardstate: {
         1: {team: 'red', role: 'codemaster', playerName: ''},
         2: {team: 'red', role: 'guesser', playerName: ''},
