@@ -4158,7 +4158,8 @@ small {
   display: inline-block;
   height: 36px;
   line-height: 36px;
-  padding: 0 16px;
+  padding: 0px 16px;
+  margin: 5px;
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
