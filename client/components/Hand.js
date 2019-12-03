@@ -41,18 +41,25 @@ export default class Hand extends React.Component {
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
-    if (this.props.active === 0) {
-      return <div id="hand-bottom">Waiting for game to begin.</div>
+    if (this.props.room === '') {
+      return (
+        <div id="hand-bottom">
+          {' '}
+          Welcome to CodeWord! Create or join a game on the left panel.{' '}
+        </div>
+      )
     }
-
+    if (this.props.active === 0) {
+      return <div id="hand-bottom">You are in the room {this.props.room}.</div>
+    }
     if (this.props.yourTurn) {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
           <div id="hand-bottom">
             <p>
-              Please submit a one-word clue, and a number of cards that
-              correspond to that clue:
+              <b>It's your turn: </b> Please submit a one-word clue, and a
+              number of cards that correspond to that clue:
             </p>
 
             <form id="give-clue" onSubmit={this.giveClue}>
@@ -84,10 +91,11 @@ export default class Hand extends React.Component {
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
           <div id="hand-bottom">
-            Your codemaster gave the clue {this.props.currentClue.clue} for{' '}
-            {this.props.currentClue.clueNum}. Please select up to{' '}
-            {this.props.currentClue.clueNum + 1} guesses. If you want to select
-            less than that, press the "Done" button to end your turn.
+            <b>It's your turn: </b> Your codemaster gave the clue{' '}
+            {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
+            Please select up to {this.props.currentClue.clueNum + 1} guesses. If
+            you want to select less than that, press the "Done" button to end
+            your turn.
             <button type="button" onClick={this.handleClick}>
               Done
             </button>

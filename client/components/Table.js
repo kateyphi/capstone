@@ -43,7 +43,6 @@ export default class Table extends React.Component {
 
     // 4) The state that is governing most of what the players see is on this component. When this socket below is emitted, passing in an updated boardstate, it updates the state on this component.
     socket.on('update_boardstate', boardstate => {
-      console.log('im updating boardstate!')
       this.setState({boardstate})
     })
 

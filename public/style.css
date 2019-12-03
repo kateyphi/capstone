@@ -176,8 +176,7 @@ nav a {
 }
 
 #teams {
-  background-color: #c2a78a;
-  font-size: 12px;
+  background-color: grey;
   display: flex;
   flex-direction: row;
   border-radius: 3px;
@@ -195,7 +194,7 @@ nav a {
 }
 
 #board-info {
-  background-color: #c2a78a;
+  background-color: grey;
 }
 
 .table {
