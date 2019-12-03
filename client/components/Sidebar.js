@@ -59,7 +59,7 @@ class Sidebar extends React.Component {
             </Row>
             <Row>
               <Input
-                placeholder="enter room name"
+                placeholder="enter username"
                 s={12}
                 label="Name"
                 validate
