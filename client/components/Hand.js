@@ -56,7 +56,9 @@ export default class Hand extends React.Component {
             </p>
 
             <form id="give-clue" onSubmit={this.giveClue}>
-              <label htmlFor="clue">Clue:</label>
+              <h5 htmlFor="clue" style={{color: 'black', fontWeight: 'bold'}}>
+                Clue:
+              </h5>
               <input
                 name="clue"
                 type="text"
@@ -64,10 +66,12 @@ export default class Hand extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.clue}
               />
-              <label htmlFor="clue">Number:</label>
+              <h5 htmlFor="clue" style={{color: 'black', fontWeight: 'bold'}}>
+                Number:
+              </h5>
               <input
                 name="clueNum"
-                type="number"
+                type="text"
                 autoComplete="off"
                 onChange={this.handleChange}
                 value={this.state.clueNum}
