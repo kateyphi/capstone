@@ -49,8 +49,7 @@ export default class Hand extends React.Component {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-
-          <div>
+          <div className="codemasterview">
             <h5>
               {' '}
               You are the {this.props.boardstate[this.props.player].team}{' '}
