@@ -29,9 +29,8 @@ class Chat extends React.Component {
   }
 
   addMessage = data => {
-    console.log(data)
     this.setState({messages: [...this.state.messages, data]})
-    console.log(this.state.messages)
+    if (this.state.messages.length > 12) return this.state.messages.shift()
   }
 
   sendMessage = ev => {
@@ -48,6 +47,7 @@ class Chat extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-4">
+            å
             <div className="card">
               <div className="card-body">
                 <div className="room">Room: {this.state.roomname}</div>
