@@ -2,7 +2,7 @@
 
 * Grace Hopper 1909 - Capstone Project
 
-Visit [Codewords](https://codewords.herokuapp.com/) to check it out!
+Visit [Codewords](https://codewords-1909-gracehopper.herokuapp.com/) to check it out!
 
 ## Table of Contents
 
