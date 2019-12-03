@@ -114,6 +114,26 @@ nav a {
   margin: 15px;
 }
 
+#user-info {
+  background-color: beige;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.info-red {
+  color: red;
+}
+
+.info-blue {
+  color: rgb(101, 101, 168);
+}
+
+.info-labels {
+  font-weight: bold;
+}
+
 #hand-bottom {
   text-align: center;
   border-radius: 3px;
@@ -147,6 +167,34 @@ nav a {
 
 #chat {
   flex-shrink: 1;
+}
+
+#game {
+  display: flex;
+  flex-direction: row;
+}
+
+#teams {
+  background-color: #c2a78a;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+#redteam {
+  background-color: lightcoral;
+  border-radius: 3px;
+}
+
+#blueteam {
+  background-color: lightskyblue;
+  border-radius: 3px;
+}
+
+#board-info {
+  background-color: #c2a78a;
 }
 
 .table {
