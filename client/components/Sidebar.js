@@ -78,14 +78,6 @@ class Sidebar extends React.Component {
               onClick={() => this.joinRoom(room[0], this.state.newUser)}
             >{`${room[0]}: ${room[1]} players`}</SideNavItem>
           ))}
-          {window.location.href.slice(-1) === '!' ? null : (
-            <SideNavItem>
-              <Link to="/rules">
-                <Button>How to Play</Button>{' '}
-                {console.log(window.location.href.slice(-1))}
-              </Link>
-            </SideNavItem>
-          )}
         </SideNav>
       </div>
     )
