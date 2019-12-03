@@ -24,7 +24,9 @@ export default class Table extends React.Component {
         },
         currentClue: {clue: '', clueNum: 0, player: 0},
         cardsChosen: 0,
-        activePlayer: 0
+        activePlayer: 0,
+        redScore: 9,
+        blueScore: 8
       }
     }
 

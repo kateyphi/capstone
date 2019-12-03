@@ -71,6 +71,11 @@ class Board extends React.Component {
       this.props.clueNum,
       this.props.cardsChosen
     )
+    this.checkWinner()
+  }
+
+  checkWinner() {
+    socket.emit('check winner', this.props.room)
   }
 
   // Create the 5 x 5 board
