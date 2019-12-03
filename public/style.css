@@ -227,7 +227,6 @@ body {
 }
 
 .card-body {
-  display: flex;
   flex-shrink: 1;
   height: 30vh;
 }
@@ -268,6 +267,7 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
 
 #clue-label {
   font-size: 20px;

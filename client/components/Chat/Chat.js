@@ -50,9 +50,9 @@ class Chat extends React.Component {
           <div className="col-4">
             <div className="card">
               <div className="card-body">
-                <div className="card-title">Room: {this.state.roomname}</div>
+                <div className="room">Room: {this.state.roomname}</div>
                 <hr />
-                <div className="messages">
+                <div className="message">
                   {this.state.messages.map(message => {
                     return (
                       <div>
@@ -63,13 +63,6 @@ class Chat extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                {/* <input
-                  type="text"
-                  placeholder="Name"
-                  value={this.state.username}
-                  onChange={ev => this.setState({username: ev.target.value})}
-                  className="form-control"
-                /> */}
                 <br />
                 <input
                   type="text"
