@@ -1,5 +1,6 @@
 //require in the 'deck' class which creates a new board:
 const Deck = require('../classes/deck')
+const checkWinner = require('./checkWinner')
 
 //initialize 'rooms', an object that will contain all of the game rooms that get made.
 let rooms = {}
@@ -23,7 +24,8 @@ const newRound = (roomName, io) => {
     // these 2 lines below represent the last clue that was given and who the active player is.
     currentClue: {clue: '', clueNum: 0, player: 0},
     cardsChosen: 0,
-    activePlayer: 0
+    activePlayer: 0,
+    activeTeam: ''
   }
   // run the newDeck method on the deck class (found in ../classes/deck), which shuffles the words and assigns which cards on the board will be red, blue, beige, and grey.
   // room.deck.newDeck()
@@ -165,6 +167,7 @@ module.exports = io => {
         rooms[roomName].boardstate.cardsChosen = 0
       } else {
         rooms[roomName].boardstate.colors.grey.push(idx)
+        rooms[roomName].boardstate.activeTeam = team
         // GAME OVER. TODO: what happens when a game ends?? 'you win/you lose' popup? for now for production,
         rooms[roomName].boardstate.activePlayer =
           rooms[roomName].boardstate.activePlayer % 4 + 1
@@ -186,6 +189,10 @@ module.exports = io => {
 
     socket.on('newgame', roomName => {
       newRound(roomName, io)
+    })
+
+    socket.on('check winner', roomName => {
+      checkWinner(rooms, roomName, io)
     })
   })
 }

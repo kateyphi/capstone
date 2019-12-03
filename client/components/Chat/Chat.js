@@ -18,8 +18,6 @@ class Chat extends React.Component {
       this.setState({messages: []})
     })
 
-    // this.socket = io('localhost:3000')
-
     socket.on('receiveMessage', data => {
       this.addMessage(data)
     })
@@ -30,7 +28,6 @@ class Chat extends React.Component {
 
   addMessage = data => {
     this.setState({messages: [...this.state.messages, data]})
-    if (this.state.messages.length > 10) return this.state.messages.shift()
   }
 
   sendMessage = ev => {
@@ -47,25 +44,25 @@ class Chat extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-4">
+            <div className="room">Room: {this.state.roomname}</div>
+            <hr />
             <div className="card">
-              <div className="card-body">
-                <div className="room">Room: {this.state.roomname}</div>
-                <hr />
+              <ScrollToBottom className="card-body">
                 <div className="message">
                   {this.state.messages.map(message => {
                     return (
-                      <ScrollToBottom key={message.id}>
+                      <div width="20vw" height="25vh" key={message.id}>
                         {message.author}: {message.message}
-                      </ScrollToBottom>
+                      </div>
                     )
                   })}
                 </div>
-              </div>
+              </ScrollToBottom>
               <div className="card-footer">
                 <br />
                 <input
                   type="text"
-                  placeholder="Message"
+                  placeholder="Type a message..."
                   className="form-control"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
