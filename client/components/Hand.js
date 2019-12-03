@@ -41,10 +41,17 @@ export default class Hand extends React.Component {
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
-    if (this.props.active === 0) {
-      return <div id="hand-bottom">Waiting for game to begin.</div>
+    if (this.props.room === '') {
+      return (
+        <div id="hand-bottom">
+          {' '}
+          Welcome to CodeWord! Create or join a game on the left panel.{' '}
+        </div>
+      )
     }
-
+    if (this.props.active === 0) {
+      return <div id="hand-bottom">You are in the room {this.props.room}.</div>
+    }
     if (this.props.yourTurn) {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
