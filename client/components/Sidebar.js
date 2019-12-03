@@ -63,12 +63,11 @@ class Sidebar extends React.Component {
               room[1]
             } players`}</SideNavItem>
           ))}
-          {window.location.href === '/rules' ? (
-            <Button>Back to Home</Button>
-          ) : (
+          {window.location.href.slice(-1) === '!' ? null : (
             <SideNavItem>
               <Link to="/rules">
-                <Button>How to Play</Button>
+                <Button>How to Play</Button>{' '}
+                {console.log(window.location.href.slice(-1))}
               </Link>
             </SideNavItem>
           )}
