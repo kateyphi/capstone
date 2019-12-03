@@ -41,6 +41,7 @@ export default class Hand extends React.Component {
   // 8) This component renders the sentences that appear under the board.
   render() {
     //if there's no active player yet (i.e. the game hasn't started)
+    console.log(this.props.boardstate)
     if (this.props.active === 0) {
       return <div id="hand-bottom">Waiting for game to begin.</div>
     }
@@ -48,33 +49,29 @@ export default class Hand extends React.Component {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-          <form id="give-clue" onSubmit={this.giveClue}>
-            <label id="clue-label" htmlFor="clue">
-              Clue:
-            </label>
-            <input
-              id="clue-input"
-              name="clue"
-              type="text"
-              autoComplete="off"
-              onChange={this.handleChange}
-              value={this.state.clue}
-              placeholder="enter your clue here"
-            />
-            <label id="clue-label" htmlFor="clue">
-              Number:
-            </label>
-            <input
-              id="clue-input"
-              name="clueNum"
-              type="number"
-              autoComplete="off"
-              onChange={this.handleChange}
-              value={this.state.clueNum}
-              placeholder="choose a number of tiles"
-            />
-            <button type="submit">Submit</button>
-          </form>
+          <div id="hand-bottom">
+            Ok {this.props.boardstate[this.props.player].playerName}, give your
+            clue.
+            <form id="give-clue" onSubmit={this.giveClue}>
+              <label htmlFor="clue">Clue:</label>
+              <input
+                name="clue"
+                type="text"
+                autoComplete="off"
+                onChange={this.handleChange}
+                value={this.state.clue}
+              />
+              <label htmlFor="clue">Number:</label>
+              <input
+                name="clueNum"
+                type="number"
+                autoComplete="off"
+                onChange={this.handleChange}
+                value={this.state.clueNum}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         )
       } else {
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11

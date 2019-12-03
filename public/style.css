@@ -16,10 +16,10 @@ nav a {
   margin: 1em;
 }
 
-form div {
+/* form div {
   margin: 1em;
   display: inline-block;
-}
+} */
 
 #hand {
   display: flex;
@@ -31,7 +31,7 @@ form div {
   flex-direction: column;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-  width: 16.5em;
+  width: 16 5rem;
 }
 
 .board-row:after {
@@ -64,8 +64,8 @@ form div {
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
-  height: 75px;
-  width: 125px;
+  height: 5rem;
+  width: 9rem;
   margin: 2px;
 }
 
@@ -74,8 +74,8 @@ form div {
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
-  height: 75px;
-  width: 125px;
+  height: 5rem;
+  width: 9rem;
   margin: 2px;
 }
 
@@ -84,8 +84,8 @@ form div {
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
-  height: 75px;
-  width: 125px;
+  height: 5rem;
+  width: 9rem;
   margin: 2px;
 }
 
@@ -94,8 +94,8 @@ form div {
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
-  height: 75px;
-  width: 125px;
+  height: 5rem;
+  width: 9rem;
   margin: 2px;
 }
 
@@ -104,9 +104,14 @@ form div {
   border: 1px solid black;
   display: grid;
   border-radius: 3px;
-  height: 75px;
-  width: 125px;
+  height: 5rem;
+  width: 9rem;
   margin: 2px;
+}
+
+#hand-bottom {
+  background-color: #c2a78a;
+  border-radius: 3px;
 }
 
 .flex {
@@ -144,6 +149,7 @@ form div {
   flex-direction: column;
   width: 60vw;
   height: 50vh;
+  flex-shrink: 1;
 }
 
 #sidebar {
@@ -163,8 +169,8 @@ form div {
   justify-content: space-between;
   background: #c2a78a;
   border-radius: 8px;
-  height: 60%;
-  width: 80%;
+  height: 50vh;
+  width: 40vw;
 }
 
 .form {
@@ -214,6 +220,54 @@ select:focus {
 body {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8eh6_i-J4UzR3y_gN_F6T-G3ZOol0iEjYi2P8fcgVfjihWwyi&s);
 }
+
+.card-footer {
+  width: 38vw;
+  height: 18vh;
+}
+
+.card-body {
+  display: flex;
+  flex-shrink: 1;
+  height: 30vh;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 
 #clue-label {
   font-size: 20px;
