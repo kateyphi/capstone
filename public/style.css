@@ -123,6 +123,10 @@ nav a {
   justify-content: space-evenly;
 }
 
+h4 {
+  text-align: center;
+}
+
 .info-red {
   color: red;
 }
@@ -136,7 +140,6 @@ nav a {
 }
 
 #hand-bottom {
-  text-align: center;
   border-radius: 3px;
 }
 
@@ -227,10 +230,11 @@ nav a {
   justify-content: space-between;
   background: lightslategrey;
   border-radius: 8px;
-  height: 50vh;
+  height: 51vh;
   width: 21vw;
   text-align: 20vw;
   word-wrap: break-word;
+  margin-right: 15px;
 }
 
 .form {
@@ -288,7 +292,7 @@ body {
 
 .card-footer {
   width: 20vw;
-  height: 13vh;
+  height: 14vh;
   word-wrap: break-word;
   position: static;
 }
@@ -353,10 +357,6 @@ body {
 
 #give-clue {
   font-weight: bold;
-}
-
-h5 {
-  text-align: center;
 }
 
 .center {
