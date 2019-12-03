@@ -51,8 +51,8 @@ export default class Hand extends React.Component {
         return (
           <div id="hand-bottom">
             <p>
-              Please submit a one-word clue, and a number of cards that
-              correspond to that clue:
+              <b>It's your turn: </b> Please submit a one-word clue, and a
+              number of cards that correspond to that clue:
             </p>
 
             <form id="give-clue" onSubmit={this.giveClue}>
@@ -80,10 +80,11 @@ export default class Hand extends React.Component {
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
           <div id="hand-bottom">
-            Your codemaster gave the clue {this.props.currentClue.clue} for{' '}
-            {this.props.currentClue.clueNum}. Please select up to{' '}
-            {this.props.currentClue.clueNum + 1} guesses. If you want to select
-            less than that, press the "Done" button to end your turn.
+            <b>It's your turn: </b> Your codemaster gave the clue{' '}
+            {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
+            Please select up to {this.props.currentClue.clueNum + 1} guesses. If
+            you want to select less than that, press the "Done" button to end
+            your turn.
             <button type="button" onClick={this.handleClick}>
               Done
             </button>
