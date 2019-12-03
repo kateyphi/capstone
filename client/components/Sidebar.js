@@ -1,6 +1,5 @@
 import React from 'react'
 import socket from '../socket'
-import {Link} from 'react-router-dom'
 import {SideNav, SideNavItem, Button, Row, Input} from 'react-materialize'
 
 class Sidebar extends React.Component {
