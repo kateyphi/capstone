@@ -32,7 +32,7 @@ const Square = props => {
         onClick={props.chooseCard}
       >
         {/* The content of this div is  the value passed down, i.e. the word from the words array. ///14 */}
-        {props.value}
+        <h4>{props.value}</h4>
       </div>
     )
   } else {

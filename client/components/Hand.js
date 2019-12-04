@@ -110,9 +110,15 @@ export default class Hand extends React.Component {
         return (
           <div id="hand-bottom">
             <b>It's your turn: </b> Your codemaster gave the clue{' '}
-            {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
-            Please select up to {this.props.currentClue.clueNum + 1} guesses. If
-            you want to select less than that, press the "Done" button to end
+            <text style={{fontWeight: 'bold'}}>
+              {this.props.currentClue.clue}
+            </text>{' '}
+            for{' '}
+            <text style={{fontWeight: 'bold'}}>
+              {this.props.currentClue.clueNum}
+            </text>
+            . Please select up to {this.props.currentClue.clueNum + 1} guesses.
+            If you want to select less than that, press the "Done" button to end
             your turn.
             <button type="button" onClick={this.handleClick}>
               Done
@@ -132,8 +138,14 @@ export default class Hand extends React.Component {
       return (
         <div id="hand-bottom">
           Player {this.props.currentClue.player} gave the clue{' '}
-          {this.props.currentClue.clue} for {this.props.currentClue.clueNum}.
-          Waiting for the {this.props.currentPlayer.team}{' '}
+          <text style={{fontWeight: 'bold'}}>
+            {this.props.currentClue.clue}
+          </text>{' '}
+          for{' '}
+          <text style={{fontWeight: 'bold'}}>
+            {this.props.currentClue.clueNum}
+          </text>
+          . Waiting for the {this.props.currentPlayer.team}{' '}
           {this.props.currentPlayer.role} to submit their guesses.
         </div>
       )
