@@ -20,7 +20,7 @@ class Deck {
   async shuffleWords() {
     try {
       // axios call for 25 random words from our db
-      const {data} = await axios.get(`http://localhost:3000/api/words/random`)
+      const {data} = await axios.get(`https://codewords-1909-gracehopper.herokuapp.com/api/words/random`)
       const wordArray = data.map(wordObj => {
         return wordObj.word
       })
