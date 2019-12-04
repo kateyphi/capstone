@@ -27,12 +27,11 @@ class Board extends React.Component {
     socket.on('win', winner => {
       console.log(winner)
       Swal.fire({
-        title: 'GAME OVER!',
-        text: `${winner}`,
-        icon: 'info',
-        timer: 5000,
         html:
-          '<a href="https://codewords-1909-gracehopper.herokuapp.com/"><button> PLAY AGAIN ? </button> </a>'
+          '<a href="https://codewords-1909-gracehopper.herokuapp.com/"><button> PLAY AGAIN ? </button> </a>',
+        title: `GAME OVER! ${winner}`,
+        icon: 'info',
+        timer: 10000
       })
     })
 
