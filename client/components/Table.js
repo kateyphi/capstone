@@ -33,7 +33,7 @@ export default class Table extends React.Component {
       }
     }
 
-    // 2b) This socket takes in the room and the player, and puts them on state. To clarify, the 'player' property on state will refer to the player who is viewing this component. It is specific to each person in the game. ///2b
+    // 2b) This socket takes in the room and the player, and puts them on state. To clarify, the 'player' property on state will refer to the player who is viewing this component. It is specific to each person in the game. ///
     socket.on('joinedroom', (room, player, playerName) => {
       this.setState({room, player, playerName})
       console.log(
