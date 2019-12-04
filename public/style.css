@@ -57,7 +57,6 @@ nav a {
 
 .square-red {
   background-color: #fe5353;
-  border: 1px solid black;
   text-align: center;
   line-height: 8;
   display: grid;
@@ -69,7 +68,6 @@ nav a {
 
 .square-blue {
   background-color: #4da6ff;
-  border: 1px solid black;
   text-align: center;
   line-height: 8;
   display: grid;
@@ -81,7 +79,6 @@ nav a {
 
 .square-beige {
   background-color: beige;
-  border: 1px solid black;
   text-align: center;
   line-height: 8;
   display: grid;
@@ -93,7 +90,6 @@ nav a {
 
 .square-grey {
   background-color: grey;
-  border: 1px solid black;
   text-align: center;
   line-height: 8;
   display: grid;
@@ -105,7 +101,6 @@ nav a {
 
 .square-white {
   background-color: #cacac9;
-  border: 1px solid black;
   text-align: center;
   line-height: 8;
   display: grid;
@@ -113,6 +108,14 @@ nav a {
   height: 8rem;
   width: 13rem;
   margin: 15px;
+}
+
+#square-chosen {
+  border: 5px solid black;
+}
+
+#square-not-chosen {
+  border: 1px solid black;
 }
 
 #user-info {

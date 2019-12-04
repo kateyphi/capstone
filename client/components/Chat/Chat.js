@@ -1,12 +1,13 @@
 import React from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom'
 import socket from '../../socket'
+import Swal from 'sweetalert2'
 
 class Chat extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      roomname: '',
+      roomname: 'lobby',
       username: '',
       message: '',
       messages: []
@@ -26,6 +27,9 @@ class Chat extends React.Component {
   }
 
   addMessage = data => {
+    if (!this.state.username) {
+      Swal.fire('Please enter a nickname to join.')
+    }
     this.setState({messages: [...this.state.messages, data]})
   }
 

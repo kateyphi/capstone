@@ -1,6 +1,22 @@
 import React from 'react'
 
+function something(colorsObj, idx) {
+  let chosenIndices = [
+    ...colorsObj.red,
+    ...colorsObj.blue,
+    ...colorsObj.beige,
+    ...colorsObj.grey
+  ]
+  console.log('indices:', chosenIndices, 'index:', idx)
+  if (chosenIndices.includes(idx)) {
+    return 'chosen'
+  } else {
+    return 'not-chosen'
+  }
+}
+
 const Square = props => {
+  let picked = something(props.boardstate.colors, props.chosenKey)
   //14) If the game hasn't started, render empty card.
   if (!props.currentPlayer) {
     return <div id={props.key} className="square-white" />
@@ -11,7 +27,7 @@ const Square = props => {
       // The className of this card is determined by the 'background' prop that was passed down.
       // When this card is clicked, it runs the chooseCard method back on the Board component.
       <div
-        id={props.key}
+        id={`square-${picked}`}
         className={`square-${props.background}`}
         onClick={props.chooseCard}
       >
@@ -21,7 +37,7 @@ const Square = props => {
     )
   } else {
     return (
-      <div id={props.key} className={`square-${props.background}`}>
+      <div id={`square-${picked}`} className={`square-${props.background}`}>
         {props.value}
       </div>
     )
