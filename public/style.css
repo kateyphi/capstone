@@ -125,6 +125,8 @@ nav a {
 
 h4 {
   text-align: center;
+  color: black;
+  text-shadow: 1px 1px 2px darkgrey;
 }
 
 .info-red {
@@ -189,11 +191,18 @@ h4 {
 #redteam {
   background-color: lightcoral;
   border-radius: 3px;
+  border: 1px solid black;
+  color: black;
+  text-shadow: 1px 1px 2px darkgrey;
 }
 
 #blueteam {
   background-color: lightskyblue;
   border-radius: 3px;
+  color: black;
+  border: 1px solid black;
+  border-left: 1px solid black;
+  text-shadow: 1px 1px 2px darkgrey;
 }
 
 #board-info {
@@ -222,6 +231,7 @@ h4 {
 .room {
   color: white;
   padding-top: 10px;
+  text-shadow: 1px 1px 2px black;
 }
 
 .container {
