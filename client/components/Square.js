@@ -38,7 +38,7 @@ const Square = props => {
   } else {
     return (
       <div id={`square-${picked}`} className={`square-${props.background}`}>
-        {props.value}
+        <h4>{props.value}</h4>
       </div>
     )
   }
