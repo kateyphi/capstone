@@ -30,7 +30,9 @@ class Board extends React.Component {
         title: 'GAME OVER!',
         text: `${winner}`,
         icon: 'info',
-        confirmButtonText: 'Cool'
+        timer: 5000,
+        html:
+          '<a href="https://codewords-1909-gracehopper.herokuapp.com/"><button> PLAY AGAIN ? </button> </a>'
       })
     })
 

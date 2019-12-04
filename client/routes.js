@@ -19,7 +19,7 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path="/" component={Table} />
+        <Route path="/" component={Table} />
       </Switch>
     )
   }
