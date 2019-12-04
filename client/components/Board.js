@@ -113,10 +113,11 @@ class Board extends React.Component {
 
   // 13) This will render a Square component, passing down certain props...
   renderSquare(i) {
+    let index = i
     return (
       <Square
         //Each square has a 'key' prop, a number from 0 to 24, which was passed into this method.
-        key={i}
+        chosenKey={index}
         //Each square's value is the word at that index in the 'words' array on state.
         value={this.state.words[i]}
         //Each square's 'background' prop is found by the findColor method above (-->13a)
@@ -125,6 +126,7 @@ class Board extends React.Component {
         chooseCard={() => this.chooseCard(i)}
         yourTurn={this.props.yourTurn}
         currentPlayer={this.props.currentPlayer}
+        boardstate={this.props.boardstate}
       />
     )
   }
