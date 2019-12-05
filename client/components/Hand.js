@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import socket from '../socket'
 import Swal from 'sweetalert2'
@@ -118,6 +119,13 @@ export default class Hand extends React.Component {
       )
     }
     if (this.props.yourTurn) {
+      //play a sound if it's your turn you're the codemaster
+      if (this.props.yourTurn && this.state.clue === '') {
+        let audio = new Audio(
+          'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
+        )
+        audio.play()
+      }
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
@@ -153,6 +161,10 @@ export default class Hand extends React.Component {
           </div>
         )
       } else {
+        let audio = new Audio(
+          'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
+        )
+        audio.play()
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
           <div id="hand-bottom">

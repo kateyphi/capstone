@@ -7,7 +7,6 @@ function something(colorsObj, idx) {
     ...colorsObj.beige,
     ...colorsObj.grey
   ]
-  console.log('indices:', chosenIndices, 'index:', idx)
   if (chosenIndices.includes(idx)) {
     return 'chosen'
   } else {
