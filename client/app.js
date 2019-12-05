@@ -37,6 +37,7 @@ const App = () => {
         socket.emit('joinroom', 'lobby', result.value[0])
       } else {
         socket.emit('joinroom', result.value[1], result.value[0])
+        socket.emit('get available rooms')
       }
     })
   return (
