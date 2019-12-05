@@ -123,33 +123,37 @@ export default class Hand extends React.Component {
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
           <div id="hand-bottom">
-            <p>
+            <text style={{fontSize: 30}}>
               <b>It's your turn: </b> Please submit a one-word clue, and a
               number of cards that correspond to that clue:
-            </p>
-
+            </text>
+            <br />
             <form id="give-clue" onSubmit={this.giveClue}>
-              <h5 htmlFor="clue" style={{color: 'black', fontWeight: 'bold'}}>
+              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
                 Clue:
-              </h5>
+              </text>
               <input
+                style={{width: 300}}
                 name="clue"
                 type="text"
                 autoComplete="off"
                 onChange={this.handleChange}
                 value={this.state.clue}
               />
-              <h5 htmlFor="clue" style={{color: 'black', fontWeight: 'bold'}}>
+              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
                 Number:
-              </h5>
+              </text>
               <input
+                style={{width: 100}}
                 name="clueNum"
                 type="text"
                 autoComplete="off"
                 onChange={this.handleChange}
                 value={this.state.clueNum}
               />
-              <button type="submit">Submit</button>
+              <button type="submit" style={{fontSize: 16}}>
+                Submit
+              </button>
             </form>
           </div>
         )
