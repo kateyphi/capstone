@@ -71,6 +71,14 @@ export default class Hand extends React.Component {
       )
     }
     if (this.props.yourTurn) {
+      // alert the player that it's their turn with a sound
+      // let audio = new Audio('audio_file.mp3')
+      // audio.play()
+      var audio = new Audio(
+        'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
+      )
+      audio.play()
+      console.log('hi')
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
