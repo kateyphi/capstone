@@ -61,17 +61,6 @@ class Sidebar extends React.Component {
       <div id="sidebar">
         <SideNav className="fixed" trigger={<Button>Rooms</Button>}>
           <Row>
-            <div id="gold">Enter your nickname:</div>
-
-            <Input
-              placeholder="enter nickname"
-              s={12}
-              value={this.state.newUser}
-              validate
-              onChange={this.handleName}
-            />
-          </Row>
-          <Row>
             <div id="gold">
               To create a new room, enter a room name below and press Create
               Room.
