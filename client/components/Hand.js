@@ -22,16 +22,47 @@ export default class Hand extends React.Component {
   // 9) This method emits the 'give clue' socket, which is found in server/socket/index.js, passing in our room (which was passed down as props), the given clue (found on state), and the given number (found on state). ///9
   giveClue = evt => {
     evt.preventDefault()
-    if (
-      this.state.clue === '' ||
-      this.state.clueNum === '' ||
-      this.state.clueNum < 1 ||
-      this.state.clueNum > 9
-    ) {
+    if (this.state.clue === '' || this.state.clueNum === '') {
       evt.preventDefault()
       Swal.fire({
         title: 'Input Error',
-        text: 'Clue cannot be empty. Number must be between 1-9',
+        text: 'Clue and Number fields cannot be blank',
+        icon: 'info'
+      })
+      return false
+    }
+    if (this.state.clue.includes(' ')) {
+      evt.preventDefault()
+      Swal.fire({
+        title: 'Input Error',
+        text: 'Clues should only be one word',
+        icon: 'info'
+      })
+      return false
+    }
+    if (this.state.clue.includes('_')) {
+      evt.preventDefault()
+      Swal.fire({
+        title: 'Input Error',
+        text: 'Underscores are the cousins of spaces...',
+        icon: 'info'
+      })
+      return false
+    }
+    if (this.state.clue.length > '15') {
+      evt.preventDefault()
+      Swal.fire({
+        title: 'Hmm...',
+        text: 'Your clue is a bit long...',
+        icon: 'info'
+      })
+      return false
+    }
+    if (this.state.clueNum < 1 || this.state.clueNum > 9) {
+      evt.preventDefault()
+      Swal.fire({
+        title: 'Input Error',
+        text: 'Number must be between 1-9',
         icon: 'info'
       })
       return false
