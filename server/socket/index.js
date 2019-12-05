@@ -58,13 +58,18 @@ module.exports = io => {
     socket.on('get available rooms', () => {
       let openRooms = Object.keys(rooms)
       openRooms = openRooms.filter(room => rooms[room].players.length < 4)
-      openRooms = openRooms.map(room => [room, rooms[room].players.length])
+      openRooms = openRooms.map(room => [
+        room,
+        rooms[room].players.length,
+        rooms[room].players.map(x => x.playerName)
+      ])
       io.in('lobby').emit('open rooms', openRooms)
     })
 
     socket.on('joinroom', (roomName, userName) => {
       if (roomName === 'lobby') {
         socket.emit('joinchat', roomName, userName)
+        socket.emit('sidebar username', userName)
       } else {
         // 2) if the room a user created does not yet exist, we will create a new room with that roomName, which is initialized with a new deck [required in from ../classes/deck, shown above], an empty array of players, and an empty object for the boardstate. (--> 2a)
         if (!rooms[roomName]) {
