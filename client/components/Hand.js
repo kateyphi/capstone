@@ -1,5 +1,6 @@
 import React from 'react'
 import socket from '../socket'
+import Swal from 'sweetalert2'
 
 export default class Hand extends React.Component {
   constructor(props) {
@@ -21,17 +22,27 @@ export default class Hand extends React.Component {
   // 9) This method emits the 'give clue' socket, which is found in server/socket/index.js, passing in our room (which was passed down as props), the given clue (found on state), and the given number (found on state). ///9
   giveClue = evt => {
     evt.preventDefault()
-    socket.emit(
-      'give clue',
-      this.props.room,
-      this.props.player,
-      this.state.clue,
-      +this.state.clueNum
-    )
-    this.setState({
-      clue: '',
-      clueNum: ''
-    })
+    if (this.state.clue === '' || this.state.clueNum === '') {
+      evt.preventDefault()
+      Swal.fire({
+        title: 'Input Error',
+        text: 'Clue and Number canoot be empty',
+        icon: 'info'
+      })
+      return false
+    } else {
+      socket.emit(
+        'give clue',
+        this.props.room,
+        this.props.player,
+        this.state.clue,
+        +this.state.clueNum
+      )
+      this.setState({
+        clue: '',
+        clueNum: ''
+      })
+    }
   }
 
   handleChange(evt) {
