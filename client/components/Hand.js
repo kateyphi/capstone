@@ -22,11 +22,16 @@ export default class Hand extends React.Component {
   // 9) This method emits the 'give clue' socket, which is found in server/socket/index.js, passing in our room (which was passed down as props), the given clue (found on state), and the given number (found on state). ///9
   giveClue = evt => {
     evt.preventDefault()
-    if (this.state.clue === '' || this.state.clueNum === '') {
+    if (
+      this.state.clue === '' ||
+      this.state.clueNum === '' ||
+      this.state.clueNum < 1 ||
+      this.state.clueNum > 9
+    ) {
       evt.preventDefault()
       Swal.fire({
         title: 'Input Error',
-        text: 'Clue and Number canoot be empty',
+        text: 'Clue cannot be empty. Number must be between 1-9',
         icon: 'info'
       })
       return false
