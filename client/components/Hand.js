@@ -107,13 +107,6 @@ export default class Hand extends React.Component {
       return (
         <div id="hand-bottom">
           You are in the room {this.props.room}.<br />
-          In {this.props.room}:{' '}
-          {this.state.roomPlayers.map(player => (
-            <span>
-              {player}
-              {','}
-            </span>
-          ))}
         </div>
       )
     }

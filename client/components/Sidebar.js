@@ -17,6 +17,10 @@ class Sidebar extends React.Component {
       this.setState({rooms})
       console.log('got to the open rooms socket', this.state)
     })
+
+    socket.on('sidebar username', newUser => {
+      this.setState({newUser})
+    })
   }
 
   componentDidMount = () => {
@@ -39,13 +43,9 @@ class Sidebar extends React.Component {
   }
 
   joinRoom = (room, user) => {
-    if (this.state.newUser === '') {
-      Swal.fire('Please enter a nickname to join.')
-    } else {
-      socket.emit('joinroom', room, user)
-      socket.emit('get available rooms')
-      this.setState({newRoom: '', newUser: ''})
-    }
+    socket.emit('joinroom', room, user)
+    socket.emit('get available rooms')
+    this.setState({newRoom: '', newUser: ''})
   }
 
   handleRoom = event => {
@@ -83,7 +83,11 @@ class Sidebar extends React.Component {
             <SideNavItem
               key={room.id}
               onClick={() => this.joinRoom(room[0], this.state.newUser)}
-            >{`${room[0]}: ${room[1]} players`}</SideNavItem>
+            >
+              <text style={{fontWeight: 'bold'}}>Room:</text> {room[0]}{' '}
+              <text style={{fontWeight: 'bold'}}>{room[1]} players:</text>{' '}
+              {room[2].join(',')}
+            </SideNavItem>
           ))}
         </SideNav>
       </div>
