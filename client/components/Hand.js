@@ -208,7 +208,7 @@ export default class Hand extends React.Component {
             . Please select up to {this.props.currentClue.clueNum + 1} guesses.
             If you want to select less than that, press the "Done" button to end
             your turn.
-            <button type="button" onClick={this.handleClick}>
+            <button className="btn" type="button" onClick={this.handleClick}>
               Done
             </button>
           </div>
