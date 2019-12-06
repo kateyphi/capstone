@@ -124,7 +124,7 @@ export default class Hand extends React.Component {
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
           <div className="elegant-shadow" id="hand-bottom">
-            <text style={{fontSize: 30}}>
+            <text>
               <b>It's your turn: </b> Please submit a one-word clue, and a
               number of cards that correspond to that clue:
             </text>

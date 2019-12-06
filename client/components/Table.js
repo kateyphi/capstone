@@ -96,6 +96,7 @@ export default class Table extends React.Component {
           />
         </div>
         <div className="right-side">
+          <Chat />
           <TeamInfo
             active={this.state.boardstate.activePlayer}
             boardstate={this.state.boardstate}
@@ -106,7 +107,6 @@ export default class Table extends React.Component {
             active={this.state.boardstate.activePlayer}
             boardstate={this.state.boardstate}
           />
-          <Chat />
         </div>
       </div>
     )
