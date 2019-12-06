@@ -61,7 +61,7 @@ class Sidebar extends React.Component {
       <div id="sidebar">
         <SideNav className="fixed" trigger={<Button>Rooms</Button>}>
           <Row>
-            <div id="gold">
+            <div id="golden">
               To create a new room, enter a room name below and press Create
               Room.
             </div>
@@ -75,7 +75,7 @@ class Sidebar extends React.Component {
             />
           </Row>
           <Button onClick={this.createRoom}>Create Room</Button>
-          <div id="gold">
+          <div id="golden">
             Or, to join an open room, click on one of the rooms below:
           </div>
 
