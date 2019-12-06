@@ -97,7 +97,7 @@ export default class Hand extends React.Component {
     //if there's no active player yet (i.e. the game hasn't started)
     if (this.props.room === '') {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           {'  '}
           <b>
             Welcome to Codewords! Create or join a game on the left panel.
@@ -107,7 +107,7 @@ export default class Hand extends React.Component {
     }
     if (this.props.active === 0) {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           You are in the room {this.props.room}.<br />
         </div>
       )
@@ -217,14 +217,14 @@ export default class Hand extends React.Component {
     }
     if (this.props.active === 1 || this.props.active === 3) {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           Waiting for {this.props.currentPlayer.team}{' '}
           {this.props.currentPlayer.role} to submit clue...
         </div>
       )
     } else {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           Player {this.props.currentClue.player} gave the clue{' '}
           <text style={{fontWeight: 'bold'}}>
             {this.props.currentClue.clue}

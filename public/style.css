@@ -137,6 +137,9 @@ nav a {
 
 h4 {
   text-align: center;
+  color: #2c2c2c;
+  letter-spacing: 0.05em;
+  text-shadow: 4px 4px 0px #d5d5d5, 3px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
 .info-red {
@@ -418,4 +421,12 @@ body {
 
 #padding {
   padding-left: 10px;
+}
+
+.elegant-shadow {
+  color: #e0dfdc;
+  background-color: #333;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a,
+    0 4px 0 #282828, 0 5px 0 #262626, 0 22px 30px rgba(0, 0, 0, 0.9);
 }
