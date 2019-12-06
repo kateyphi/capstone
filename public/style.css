@@ -234,11 +234,12 @@ h4 {
   justify-content: space-between;
   background: lightslategrey;
   border-radius: 8px;
-  height: 51vh;
+  height: 55vh;
   width: 21vw;
   text-align: 20vw;
   word-wrap: break-word;
   margin-right: 15px;
+  margin-bottom: 22px;
 }
 
 .form {
@@ -367,8 +368,14 @@ body {
 }
 
 #input-clue {
-  background-color: rosybrown;
-  color: #fff;
+  background-color: #f5f5f5;
+  color: black;
+  border: 1px solid black;
+  -moz-box-shadow: 3px 3px 5px 6px rgb(141, 141, 141);
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(141, 141, 141);
+  box-shadow: 3px 3px 5px 6px rgb(141, 141, 141);
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #give-clue {
@@ -383,10 +390,14 @@ body {
 }
 
 #gold {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
 #rcorners1 {
   border-radius: 25px;
+}
+
+#padding {
+  padding-left: 10px;
 }

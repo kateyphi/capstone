@@ -9,7 +9,8 @@ export default class Hand extends React.Component {
     this.state = {
       roomPlayers: [],
       clue: '',
-      clueNum: ''
+      clueNum: '',
+      clicked: 0
     }
 
     socket.on('update players in room', username => {
@@ -99,7 +100,7 @@ export default class Hand extends React.Component {
         <div id="hand-bottom">
           {'  '}
           <b>
-            Welcome to CodeWords! Create or join a game on the left panel.
+            Welcome to Codewords! Create or join a game on the left panel.
           </b>{' '}
         </div>
       )
@@ -129,10 +130,18 @@ export default class Hand extends React.Component {
             </text>
             <br />
             <form id="give-clue" onSubmit={this.giveClue}>
-              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+              <text
+                style={{
+                  color: 'black',
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                  paddingRight: 5
+                }}
+              >
                 Clue:
               </text>
               <input
+                id="input-clue"
                 style={{width: 300}}
                 name="clue"
                 type="text"
@@ -140,24 +149,47 @@ export default class Hand extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.clue}
               />
-              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+              <text
+                style={{
+                  color: 'black',
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                  paddingLeft: 10,
+                  paddingRight: 15
+                }}
+              >
                 Number:
               </text>
               <input
                 style={{width: 100}}
+                id="input-clue"
                 name="clueNum"
                 type="text"
                 autoComplete="off"
                 onChange={this.handleChange}
                 value={this.state.clueNum}
-              />
-              <button type="submit" style={{fontSize: 16}}>
+              />{' '}
+              <button
+                className="btn"
+                type="submit"
+                style={{marginLeft: 5, fontSize: 16}}
+              >
                 Submit
               </button>
             </form>
           </div>
         )
       } else {
+        if (this.state.clicked === 0) {
+          console.log('hi')
+          let audio = new Audio(
+            'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
+          )
+          audio.play()
+          this.setState({
+            clicked: 1
+          })
+        }
         let audio = new Audio(
           'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
         )
