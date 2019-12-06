@@ -128,7 +128,10 @@ nav a {
 }
 
 #user-info {
-  background-color: beige;
+  background-color: lightslategray;
+  color: #333;
+  margin: 10px;
+  font-size: 18px;
   border-radius: 3px;
   display: flex;
   flex-direction: row;
@@ -143,11 +146,11 @@ h4 {
 }
 
 .info-red {
-  color: red;
+  color: lightcoral;
 }
 
 .info-blue {
-  color: rgb(101, 101, 168);
+  color: lightskyblue;
 }
 
 .info-labels {
@@ -156,7 +159,7 @@ h4 {
 
 #hand-bottom {
   border-radius: 3px;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .flex {
@@ -196,6 +199,7 @@ h4 {
 
 #teams {
   background-color: grey;
+  font-size: 18px;
   display: flex;
   flex-direction: row;
   border-radius: 3px;
@@ -203,21 +207,22 @@ h4 {
 }
 
 #redteam {
-  background-color: lightcoral;
+  background-color: #fe5353;
   border-radius: 3px;
   border: 1px solid black;
   flex-basis: 50%;
 }
 
 #blueteam {
-  background-color: lightskyblue;
+  background-color: #4da6ff;
   border-radius: 3px;
   border: 1px solid black;
   flex-basis: 50%;
 }
 
 #board-info {
-  background-color: white;
+  background-color: lightgray;
+  font-size: 18px;
   border: 1px solid black;
   margin-bottom: 3px;
 }
@@ -232,6 +237,7 @@ h4 {
 
 #sidebar {
   background-color: lightslategrey;
+  width: 300px;
 }
 
 .outerContainer {
@@ -243,6 +249,8 @@ h4 {
 
 .room {
   color: white;
+  font-size: 18px;
+  font-weight: bold;
   padding-top: 10px;
 }
 
@@ -420,6 +428,7 @@ body {
 #golden {
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  font-size: 18px;
 }
 
 #rcorners1 {
@@ -431,8 +440,10 @@ body {
 }
 
 .elegant-shadow {
-  color: #e0dfdc;
+  color: #cacac9;
   background-color: #333;
+  text-align: center;
+  margin: 10px;
   letter-spacing: 0.1em;
   text-shadow: 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a,
     0 4px 0 #282828, 0 5px 0 #262626, 0 22px 30px rgba(0, 0, 0, 0.9);
