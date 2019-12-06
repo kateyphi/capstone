@@ -25,7 +25,10 @@ const newRound = (roomName, io) => {
     currentClue: {clue: '', clueNum: 0, player: 0},
     cardsChosen: 0,
     activePlayer: 0,
-    activeTeam: ''
+    redScore: 9,
+    blueScore: 8,
+    redCardsGuessed: [],
+    blueCardsGuessed: []
   }
   // run the newDeck method on the deck class (found in ../classes/deck), which shuffles the words and assigns which cards on the board will be red, blue, beige, and grey.
   // room.deck.newDeck()
@@ -140,6 +143,15 @@ module.exports = io => {
     socket.on('choose card', (roomName, player, idx, clueNum, cardsChosen) => {
       const {team} = rooms[roomName].boardstate[player]
       // The 'idx' passed in is the index of the card that the guesser clicked on. We check whether it is in the 'redWordIndices' array, 'blueWordIndices' array, etc (which are properties on the 'deck' object which lives as a property of this room). If it's in the redWordIndices array, then we push that index onto the 'red' array of the 'colors' property of our boardstate. And so on for blue, beige, and grey.
+      if (team === 'red') {
+        rooms[roomName].boardstate.redCardsGuessed.push(
+          rooms[roomName].deck.words[idx]
+        )
+      } else {
+        rooms[roomName].boardstate.blueCardsGuessed.push(
+          rooms[roomName].deck.words[idx]
+        )
+      }
       if (rooms[roomName].deck.redWordIndices.includes(idx)) {
         rooms[roomName].boardstate.colors.red.push(idx)
         if (team === 'red') {
@@ -185,12 +197,10 @@ module.exports = io => {
       }
 
       // We emit the 'update_boardstate' socket in our room, passing in the boardstate, which has now been updated with the chosen card's color and the new activePlayer. ///16
-      console.log(rooms[roomName].boardstate)
       io.in(roomName).emit('update_boardstate', rooms[roomName].boardstate)
     })
 
     socket.on('change turn', roomName => {
-      console.log('i got to the change turn socket')
       rooms[roomName].boardstate.activePlayer =
         rooms[roomName].boardstate.activePlayer % 4 + 1
       rooms[roomName].boardstate.cardsChosen = 0

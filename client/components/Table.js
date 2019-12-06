@@ -29,7 +29,9 @@ export default class Table extends React.Component {
         cardsChosen: 0,
         activePlayer: 0,
         redScore: 9,
-        blueScore: 8
+        blueScore: 8,
+        redCardsGuessed: [],
+        blueCardsGuessed: []
       }
     }
 
@@ -97,6 +99,8 @@ export default class Table extends React.Component {
           <TeamInfo
             active={this.state.boardstate.activePlayer}
             boardstate={this.state.boardstate}
+            redCardsGuessed={this.state.boardstate.redCardsGuessed}
+            blueCardsGuessed={this.state.boardstate.blueCardsGuessed}
           />
           <BoardInfo
             active={this.state.boardstate.activePlayer}

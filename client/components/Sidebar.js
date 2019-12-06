@@ -86,7 +86,7 @@ class Sidebar extends React.Component {
             >
               <text style={{fontWeight: 'bold'}}>Room:</text> {room[0]}{' '}
               <text style={{fontWeight: 'bold'}}>{room[1]} players:</text>{' '}
-              {room[2].join(',')}
+              {room[2].join(', ')}
             </SideNavItem>
           ))}
         </SideNav>
