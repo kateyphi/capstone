@@ -202,15 +202,19 @@ h4 {
 #redteam {
   background-color: lightcoral;
   border-radius: 3px;
+  border: 1px solid black;
 }
 
 #blueteam {
   background-color: lightskyblue;
   border-radius: 3px;
+  border: 1px solid black;
 }
 
 #board-info {
-  background-color: grey;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 3px;
 }
 
 .table {
