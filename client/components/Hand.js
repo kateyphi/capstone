@@ -9,7 +9,8 @@ export default class Hand extends React.Component {
     this.state = {
       roomPlayers: [],
       clue: '',
-      clueNum: ''
+      clueNum: '',
+      clicked: 0
     }
 
     socket.on('update players in room', username => {
@@ -96,17 +97,17 @@ export default class Hand extends React.Component {
     //if there's no active player yet (i.e. the game hasn't started)
     if (this.props.room === '') {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           {'  '}
           <b>
-            Welcome to CodeWords! Create or join a game on the left panel.
+            Welcome to Codewords! Create or join a game on the left panel.
           </b>{' '}
         </div>
       )
     }
     if (this.props.active === 0) {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           You are in the room {this.props.room}.<br />
         </div>
       )
@@ -122,17 +123,25 @@ export default class Hand extends React.Component {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-          <div id="hand-bottom">
+          <div className="elegant-shadow" id="hand-bottom">
             <text style={{fontSize: 30}}>
               <b>It's your turn: </b> Please submit a one-word clue, and a
               number of cards that correspond to that clue:
             </text>
             <br />
             <form id="give-clue" onSubmit={this.giveClue}>
-              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+              <text
+                style={{
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                  paddingRight: 5
+                }}
+              >
                 Clue:
               </text>
               <input
+                id="input-clue"
                 style={{width: 300}}
                 name="clue"
                 type="text"
@@ -140,31 +149,54 @@ export default class Hand extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.clue}
               />
-              <text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+              <text
+                style={{
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                  paddingLeft: 10,
+                  paddingRight: 15
+                }}
+              >
                 Number:
               </text>
               <input
                 style={{width: 100}}
+                id="input-clue"
                 name="clueNum"
                 type="text"
                 autoComplete="off"
                 onChange={this.handleChange}
                 value={this.state.clueNum}
-              />
-              <button type="submit" style={{fontSize: 16}}>
+              />{' '}
+              <button
+                className="btn"
+                type="submit"
+                style={{marginLeft: 5, fontSize: 16}}
+              >
                 Submit
               </button>
             </form>
           </div>
         )
       } else {
+        if (this.state.clicked === 0) {
+          console.log('hi')
+          let audio = new Audio(
+            'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
+          )
+          audio.play()
+          this.setState({
+            clicked: 1
+          })
+        }
         let audio = new Audio(
           'http://soundbible.com/mp3/sms-alert-1-daniel_simon.mp3'
         )
         audio.play()
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
-          <div id="hand-bottom">
+          <div className="elegant-shadow" id="hand-bottom">
             <b>It's your turn: </b> Your codemaster gave the clue{' '}
             <text style={{fontWeight: 'bold'}}>
               {this.props.currentClue.clue}
@@ -176,7 +208,7 @@ export default class Hand extends React.Component {
             . Please select up to {this.props.currentClue.clueNum + 1} guesses.
             If you want to select less than that, press the "Done" button to end
             your turn.
-            <button type="button" onClick={this.handleClick}>
+            <button className="btn" type="button" onClick={this.handleClick}>
               Done
             </button>
           </div>
@@ -185,14 +217,14 @@ export default class Hand extends React.Component {
     }
     if (this.props.active === 1 || this.props.active === 3) {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           Waiting for {this.props.currentPlayer.team}{' '}
           {this.props.currentPlayer.role} to submit clue...
         </div>
       )
     } else {
       return (
-        <div id="hand-bottom">
+        <div className="elegant-shadow" id="hand-bottom">
           Player {this.props.currentClue.player} gave the clue{' '}
           <text style={{fontWeight: 'bold'}}>
             {this.props.currentClue.clue}
