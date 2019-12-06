@@ -206,12 +206,14 @@ h4 {
   background-color: lightcoral;
   border-radius: 3px;
   border: 1px solid black;
+  flex-basis: 50%;
 }
 
 #blueteam {
   background-color: lightskyblue;
   border-radius: 3px;
   border: 1px solid black;
+  flex-basis: 50%;
 }
 
 #board-info {

@@ -16,7 +16,8 @@ const TeamInfo = props => {
           })<br />
           <b>Player 2:</b> {props.boardstate[2].playerName} ({
             props.boardstate[2].role
-          })
+          })<br />
+          <b>Cards guessed:</b> {props.redCardsGuessed.join(', ')}
         </div>
         <div id="blueteam">
           <u>
@@ -28,7 +29,8 @@ const TeamInfo = props => {
           })<br />
           <b>Player 4:</b> {props.boardstate[4].playerName} ({
             props.boardstate[4].role
-          })
+          })<br />
+          <b>Cards guessed:</b> {props.blueCardsGuessed.join(', ')}
         </div>
       </div>
     )
