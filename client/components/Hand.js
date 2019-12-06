@@ -123,7 +123,7 @@ export default class Hand extends React.Component {
       // if it's your turn and you are the codemaster, this component will render the form asking for a clue and a number. Those appear on state in real time via the handleChange method above. When submitted, it runs the giveClue method. ///8
       if (this.props.boardstate[this.props.player].role === 'codemaster') {
         return (
-          <div id="hand-bottom">
+          <div className="elegant-shadow" id="hand-bottom">
             <text style={{fontSize: 30}}>
               <b>It's your turn: </b> Please submit a one-word clue, and a
               number of cards that correspond to that clue:
@@ -132,7 +132,7 @@ export default class Hand extends React.Component {
             <form id="give-clue" onSubmit={this.giveClue}>
               <text
                 style={{
-                  color: 'black',
+                  color: 'white',
                   fontWeight: 'bold',
                   fontSize: 20,
                   paddingRight: 5
@@ -151,7 +151,7 @@ export default class Hand extends React.Component {
               />
               <text
                 style={{
-                  color: 'black',
+                  color: 'white',
                   fontWeight: 'bold',
                   fontSize: 20,
                   paddingLeft: 10,
@@ -196,7 +196,7 @@ export default class Hand extends React.Component {
         audio.play()
         // 11) if it's your turn and you are the guesser, then this component will render what the latest clue and number was, and ask you to select your guesses (by clicking on cards on the Board component) ///11
         return (
-          <div id="hand-bottom">
+          <div className="elegant-shadow" id="hand-bottom">
             <b>It's your turn: </b> Your codemaster gave the clue{' '}
             <text style={{fontWeight: 'bold'}}>
               {this.props.currentClue.clue}
