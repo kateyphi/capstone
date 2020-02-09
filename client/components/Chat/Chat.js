@@ -48,6 +48,7 @@ class Chat extends React.Component {
         <div className="row">
           <div className="col-4">
             <div className="room">Room: {this.state.roomname}</div>
+            <div className="username">Nickname: {this.state.username}</div>
             <hr />
             <div className="card">
               <ScrollToBottom className="card-body">

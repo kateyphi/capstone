@@ -58,8 +58,9 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div id="sidebar">
-        <SideNav className="fixed" trigger={<Button>Rooms</Button>}>
+      <div className="sidebar">
+        {}
+        <SideNav className="fixed">
           <Row>
             <div id="golden">
               To create a new room, enter a room name below and press Create
